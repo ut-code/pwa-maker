@@ -1,0 +1,10 @@
+#wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+
+.editor {
+  width: 800px;
+  height: 675px;
+  border: 1px solid grey;
+}

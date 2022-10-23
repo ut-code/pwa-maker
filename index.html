@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="editor-wrapper">
+        <h2>エディタ</h2>
+        <div id="html-editor" class="editor"></div>
+      </div>
+      <div class="preview-box">
+        <h2>プレビュー</h2>
+        <iframe
+          src="./iframe.html"
+          width="312px"
+          height="675px"
+          id="iframe-elem"
+        ></iframe>
+      </div>
+    </div>
+    <script src="./node_modules/monaco-editor/min/vs/loader.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
