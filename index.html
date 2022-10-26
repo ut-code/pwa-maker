@@ -9,12 +9,16 @@
     <div id="wrapper">
       <div id="editor-wrapper">
         <h2>エディタ</h2>
+        <div class="container">
+          <input id="theme-toggle" type="checkbox" checked />
+          <label for="theme-toggle">ダークテーマ</label>
+        </div>
         <div id="html-editor" class="editor"></div>
       </div>
       <div class="preview-box">
         <h2>プレビュー</h2>
         <iframe
-          src="./iframe.html"
+          srcdoc=""
           width="312px"
           height="675px"
           id="iframe-elem"
@@ -22,6 +26,6 @@
       </div>
     </div>
     <script src="./node_modules/monaco-editor/min/vs/loader.js"></script>
-    <script src="./script.js"></script>
+    <script type="module" src="./script.js"></script>
   </body>
 </html>
