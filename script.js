@@ -5,6 +5,12 @@ require.config({ paths: { vs: "./node_modules/monaco-editor/min/vs" } });
 const iframeElem = document.getElementById("iframe-elem");
 const themeToggle = document.getElementById("theme-toggle");
 
+const h1Button = document.getElementById("h1-button");
+const h1Input = document.getElementById("h1-input");
+const paraButton = document.getElementById("para-button");
+const paraInput = document.getElementById("para-input");
+const omikujiButton = document.getElementById("omikuji-button");
+
 require(["vs/editor/editor.main"], () => {
   const changeTheme = () => {
     if (themeToggle.checked) {
@@ -37,4 +43,26 @@ require(["vs/editor/editor.main"], () => {
   htmlEditor.onDidChangeModelContent(() => {
     htmlReflect();
   });
+
+  const insertText = (text) => {
+    htmlEditor.executeEdits("", [
+      {
+        forceMoveMarkers: true,
+        range: htmlEditor.getSelection(),
+        text: text,
+      },
+    ]);
+  };
+
+  h1Button.onclick = () => {
+    insertText(`<h1>${h1Input.value}</h1>`);
+  };
+
+  paraButton.onclick = () => {
+    insertText(`<p>${paraInput.value}</p>`);
+  };
+
+  omikujiButton.onclick = () => {
+    insertText([sampleCode.omikujiCode].join("\n"));
+  };
 });
