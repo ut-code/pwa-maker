@@ -1,3 +1,3 @@
-# pwa-editor-demo
+# pwa-maker
 
-<https://pwa-editor-demo.onrender.com/>
+<https://pwa-maker.onrender.com/>
