@@ -1,38 +1,40 @@
+import sampleCode from "./sample-code.js";
+
 require.config({ paths: { vs: "./node_modules/monaco-editor/min/vs" } });
 
 const iframeElem = document.getElementById("iframe-elem");
+const themeToggle = document.getElementById("theme-toggle");
 
-require(["vs/editor/editor.main"], function () {
-  var htmlEditor = monaco.editor.create(
-    document.getElementById("html-editor"),
-    {
-      value: [
-        '<!DOCTYPE html>\n<html lang="ja">\n\t<head>\n\t\t<meta charset="UTF-8" />\n\t\t<title>Document</title>\n\t</head>\n\t<body>\n\t\t<h1>Hello HTML!</h1>\n\t\t<p>自由に書き換えてみましょう。</p>\n\t</body>\n</html>',
-      ].join("\n"),
-      language: "html",
+require(["vs/editor/editor.main"], () => {
+  const changeTheme = () => {
+    if (themeToggle.checked) {
+      monaco.editor.setTheme("vs-dark");
+    } else {
+      monaco.editor.setTheme("vs");
     }
+  };
+
+  changeTheme();
+  themeToggle.addEventListener("change", changeTheme);
+
+  const htmlDefaultModel = monaco.editor.createModel(
+    [sampleCode.htmlCode].join("\n"),
+    "html"
   );
-  // var cssEditor = monaco.editor.create(document.getElementById("css-editor"), {
-  //   value: ["p {\n\tfont-weight: bold;\n}"].join("\n"),
-  //   language: "css",
-  // });
-  // var jsEditor = monaco.editor.create(document.getElementById("js-editor"), {
-  //   value: ['function x() {\n\tconsole.log("Hello world!");\n}'].join("\n"),
-  //   language: "javascript",
-  // });
+  const htmlEditor = monaco.editor.create(
+    document.getElementById("html-editor")
+  );
+
+  htmlEditor.setModel(htmlDefaultModel);
 
   const htmlReflect = () => {
     const htmlText = htmlEditor.getValue();
-    const htmlStartPoint = htmlText.indexOf("<body>");
-    const htmlEndPoint = htmlText.indexOf("</body>");
-    const htmlContent = htmlText.slice(htmlStartPoint + 6, htmlEndPoint);
-    const iframeBody = iframeElem.contentDocument.getElementById("iframe-body");
-    iframeBody.innerHTML = htmlContent;
+    iframeElem.srcdoc = [htmlText].join("\n");
   };
 
   htmlReflect();
 
-  htmlEditor.onDidChangeModelContent(function () {
+  htmlEditor.onDidChangeModelContent(() => {
     htmlReflect();
   });
 });
