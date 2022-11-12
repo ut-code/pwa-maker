@@ -1,10 +1,50 @@
 #wrapper {
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: space-around;
 }
 
 .editor {
-  width: 600px;
-  height: 675px;
+  width: 40vw;
+  height: 31vh;
   border: 1px solid grey;
+}
+
+/* .is-active.dark {
+} */
+/* .is-active.light {
+} */
+/* .is-inactive.dark {
+} */
+/* .is-inactive.light{
+} */
+
+.hidden {
+  display: none;
+}
+
+#editor-menu {
+  display: flex;
+  justify-content: space-between;
+  background-color: #ddd;
+}
+
+.tab-button {
+  background-color: #ddd;
+  border: 1px solid gray;
+  cursor: pointer;
+  outline: none;
+  padding: 0 10px;
+  appearance: none;
+}
+
+.tab-button.active-dark {
+  background-color: #1e1e1e;
+  color: #fff;
+}
+
+.tab-button.active-light {
+  background-color: #fffffe;
+  color: #000;
 }

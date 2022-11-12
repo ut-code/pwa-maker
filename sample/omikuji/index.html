@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>omikuji</title>
+    <style>
+      h1 {
+        text-align: center;
+      }
+      p {
+        text-align: center;
+      }
+      #omikuji {
+        background-color: lightgray;
+      }
+      #daikichi {
+        display: none;
+        background-color: lightpink;
+      }
+      #kichi {
+        display: none;
+        background-color: lightgreen;
+      }
+      #kyou {
+        display: none;
+        background-color: lightblue;
+      }
+      .omikuji-elements {
+        margin: 10px auto;
+        width: 200px;
+        height: 200px;
+        text-align: center;
+        line-height: 200px;
+        font-size: 36px;
+        font-weight: bold;
+      }
+
+      #button-box {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <h1>おみくじアプリ</h1>
+      <p>ボタンを押しておみくじを引きましょう。</p>
+
+      <div id="omikuji" class="omikuji-elements">おみくじ</div>
+      <div id="daikichi" class="omikuji-elements">大吉</div>
+      <div id="kichi" class="omikuji-elements">吉</div>
+      <div id="kyou" class="omikuji-elements">凶</div>
+
+      <div id="button-box">
+        <button id="omikuji-button">おみくじを引く</button>
+      </div>
+    </div>
+    <script>
+      const omikujiButton = document.getElementById("omikuji-button");
+      const omikujiImage = document.getElementById("omikuji-image");
+
+      const omikuji = document.getElementById("omikuji");
+      const daikichi = document.getElementById("daikichi");
+      const kichi = document.getElementById("kichi");
+      const kyou = document.getElementById("kyou");
+
+      omikujiButton.onclick = () => {
+        const r = Math.random();
+        if (r < 0.3) {
+          omikuji.style.display = "none";
+          daikichi.style.display = "block";
+          setTimeout(() => {
+            daikichi.style.display = "none";
+            omikuji.style.display = "block";
+          }, 1000);
+        } else if (r < 0.7) {
+          omikuji.style.display = "none";
+          kichi.style.display = "block";
+          setTimeout(() => {
+            kichi.style.display = "none";
+            omikuji.style.display = "block";
+          }, 1000);
+        } else {
+          omikuji.style.display = "none";
+          kyou.style.display = "block";
+          setTimeout(() => {
+            kyou.style.display = "none";
+            omikuji.style.display = "block";
+          }, 1000);
+        }
+      };
+    </script>
+  </body>
+</html>

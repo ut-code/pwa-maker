@@ -24,6 +24,18 @@
             </td>
             <td><button id="para-button">追加</button></td>
           </tr>
+          <!-- <tr>
+            <td>箱</td>
+            <td>
+              <select id="div-color-select">
+                <option value="">--箱の色--</option>
+                <option value="lightpink">ピンク</option>
+                <option value="lightgreen">緑</option>
+                <option value="lightblue">青</option>
+              </select>
+            </td>
+            <td><button id="div-button">追加</button></td>
+          </tr> -->
         </table>
         <table>
           <tr>
@@ -33,12 +45,23 @@
         </table>
       </div>
       <div id="editor-wrapper">
-        <h2>エディタ</h2>
-        <div class="container">
-          <input id="theme-toggle" type="checkbox" checked />
-          <label for="theme-toggle">ダークテーマ</label>
+        <!-- <h2>エディタ</h2> -->
+        <div id="editor-menu">
+          <span id="tab-wrapper">
+            <!-- なぜ間隔が開くのかわからない -->
+            <!-- <button id="html-tab" class="tab-button">構造</button>
+            <button id="css-tab" class="tab-button">見た目</button>
+            <button id="js-tab" class="tab-button">動き</button> -->
+          </span>
+
+          <span id="theme-toggle-wrapper">
+            <input id="theme-toggle" type="checkbox" checked />
+            <label for="theme-toggle">ダークテーマ</label>
+          </span>
         </div>
         <div id="html-editor" class="editor"></div>
+        <div id="css-editor" class="editor"></div>
+        <div id="js-editor" class="editor"></div>
       </div>
       <div class="preview-box">
         <h2>プレビュー</h2>
