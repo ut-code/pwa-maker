@@ -29,6 +29,9 @@ const removeButton = document.getElementById("remove-button");
 
 const testButton = document.getElementById("test-button");
 const themeToggle = document.getElementById("theme-toggle");
+
+const dlAnchor = document.getElementById("dl-anchor");
+
 // const htmlTab = document.getElementById("html-tab");
 // const cssTab = document.getElementById("css-tab");
 // const jsTab = document.getElementById("js-tab");
@@ -121,6 +124,12 @@ require(["vs/editor/editor.main"], () => {
     htmlText = bodyBeforeText + `<script>${jsValue}</script>` + bodyAfterText;
 
     iframeElem.srcdoc = [htmlText].join("\n");
+
+    const blob = new Blob([htmlText], { type: "text/html" });
+    dlAnchor.href = URL.createObjectURL(blob);
+    dlAnchor.download = "index.html";
+    // dlAnchor.textContent = "アプリのファイルをダウンロード！";
+    // dlSection.appendChild(dlAnchor);
   };
 
   allReflect();
