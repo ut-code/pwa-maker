@@ -8,20 +8,29 @@ const h1Input = document.getElementById("h1-input");
 const paraButton = document.getElementById("para-button");
 const paraInput = document.getElementById("para-input");
 
-const divColorSelect = document.getElementById("div-color-select");
 const divButton = document.getElementById("div-button");
+const divInput = document.getElementById("div-input");
+
+const whButton = document.getElementById("wh-button");
+const widthInput = document.getElementById("width-input");
+const heightInput = document.getElementById("height-input");
+
+const colorButton = document.getElementById("color-button");
+const colorSelect = document.getElementById("color-select");
+
+const randomButton = document.getElementById("random-button");
 
 const omikujiButton = document.getElementById("omikuji-button");
 
 const iframeElem = document.getElementById("iframe-elem");
 const themeToggle = document.getElementById("theme-toggle");
-const htmlTab = document.getElementById("html-tab");
-const cssTab = document.getElementById("css-tab");
-const jsTab = document.getElementById("js-tab");
+// const htmlTab = document.getElementById("html-tab");
+// const cssTab = document.getElementById("css-tab");
+// const jsTab = document.getElementById("js-tab");
 
-const htmlSpace = document.getElementById("html-editor");
-const cssSpace = document.getElementById("css-editor");
-const jsSpace = document.getElementById("js-editor");
+// const htmlSpace = document.getElementById("html-editor");
+// const cssSpace = document.getElementById("css-editor");
+// const jsSpace = document.getElementById("js-editor");
 
 require(["vs/editor/editor.main"], () => {
   //エディタ作成
@@ -115,6 +124,13 @@ require(["vs/editor/editor.main"], () => {
     ]);
   };
 
+  // 末尾に挿入するやつも必要
+  // console.log(cssEditor.getTopForLineNumber());
+  // console.log(cssEditor.getBottomForLineNumber());
+  // console.log(cssEditor.getBottomForLineNumber());
+
+  // 指定箇所（bodyの末尾とか）に追加するとかも必要
+
   const insertInCss = (text) => {
     cssEditor.executeEdits("", [
       {
@@ -143,13 +159,37 @@ require(["vs/editor/editor.main"], () => {
     insertInHtml(`<p>${paraInput.value}</p>`);
   };
 
-  omikujiButton.onclick = () => {
-    insertInHtml([sampleCode.omikujiCode].join("\n"));
+  divButton.onclick = () => {
+    insertInHtml(`<div id="${divInput.value}">テキスト</div>`);
+    insertInCss(
+      `#${divInput.value} {\n\t/* この中で「${divInput.value}」の見た目を調整 */\n}`
+    );
+    insertInJs(
+      `const ${divInput.value} = document.getElementById("${divInput.value}");\n${divInput.value}.onclick = () => {\n\t// 「${divInput.value}」がクリックされたときの動作\n\t\n}\n`
+    );
   };
 
-  // divButton.onclick = () => {
-  //   insertInHtml(`<div>テキスト</div>\n<style></style>`);
-  // };
+  whButton.onclick = () => {
+    insertInCss(
+      `width: ${widthInput.value}px; /* 横の長さ */\n\theight: ${heightInput.value}px; /* 縦の長さ */\n\t`
+    );
+  };
+
+  colorButton.onclick = () => {
+    insertInCss(`background-color: ${colorSelect.value}; /* 背景の色 */\n\t`);
+  };
+
+  randomButton.onclick = () => {
+    insertInJs(
+      `const r = Math.random();\r\n\tif (r < 0.3) {\r\n\t\t\/\/ r\u304c0.3\u3088\u308a\u5c0f\u3055\u3044\u3068\u304d\u306e\u52d5\u4f5c\r\n\t\t\r\n\t} else if (r < 0.7) {\r\n\t\t\/\/ r\u304c0.3\u4ee5\u4e0a\u3067\u30010.7\u3088\u308a\u5c0f\u3055\u3044\u3068\u304d\u306e\u52d5\u4f5c\r\n\t\t\r\n\t} else {\r\n\t\t\/\/ \u305d\u306e\u4ed6\uff08r\u304c0.7\u4ee5\u4e0a\uff09\u306e\u3068\u304d\u306e\u52d5\u4f5c\r\n\t\t\r\n\t}\r\n\t`
+    );
+  };
+
+  omikujiButton.onclick = () => {
+    insertInHtml([sampleCode.omikujiDiv].join("\n"));
+    insertInCss([sampleCode.omikujiCss].join("\n"));
+    insertInJs([sampleCode.omikujiJs].join("\n"));
+  };
 
   //ライトテーマ・ダークテーマ変更
   const changeTheme = () => {
