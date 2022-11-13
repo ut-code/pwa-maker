@@ -23,6 +23,11 @@ const randomButton = document.getElementById("random-button");
 const omikujiButton = document.getElementById("omikuji-button");
 
 const iframeElem = document.getElementById("iframe-elem");
+
+const saveButton = document.getElementById("save-button");
+const removeButton = document.getElementById("remove-button");
+
+const testButton = document.getElementById("test-button");
 const themeToggle = document.getElementById("theme-toggle");
 // const htmlTab = document.getElementById("html-tab");
 // const cssTab = document.getElementById("css-tab");
@@ -34,24 +39,47 @@ const themeToggle = document.getElementById("theme-toggle");
 
 require(["vs/editor/editor.main"], () => {
   //エディタ作成
-  const htmlDefaultModel = monaco.editor.createModel(
-    [sampleCode.htmlCode].join("\n"),
-    "html"
-  );
+  const savedHtml = localStorage.getItem("html");
+  const savedCss = localStorage.getItem("css");
+  const savedJs = localStorage.getItem("js");
+
+  let htmlDefaultModel;
+  let cssDefaultModel;
+  let jsDefaultModel;
+
+  if (savedHtml == null) {
+    htmlDefaultModel = monaco.editor.createModel(
+      [sampleCode.htmlCode].join("\n"),
+      "html"
+    );
+  } else {
+    htmlDefaultModel = monaco.editor.createModel(savedHtml, "html");
+  }
+
   const htmlEditor = monaco.editor.create(
     document.getElementById("html-editor")
   );
 
-  const cssDefaultModel = monaco.editor.createModel(
-    [sampleCode.cssCode].join("\n"),
-    "css"
-  );
+  if (savedCss == null) {
+    cssDefaultModel = monaco.editor.createModel(
+      [sampleCode.cssCode].join("\n"),
+      "css"
+    );
+  } else {
+    cssDefaultModel = monaco.editor.createModel(savedCss, "css");
+  }
+
   const cssEditor = monaco.editor.create(document.getElementById("css-editor"));
 
-  const jsDefaultModel = monaco.editor.createModel(
-    [sampleCode.jsCode].join("\n"),
-    "javascript"
-  );
+  if (savedJs == null) {
+    jsDefaultModel = monaco.editor.createModel(
+      [sampleCode.jsCode].join("\n"),
+      "javascript"
+    );
+  } else {
+    jsDefaultModel = monaco.editor.createModel(savedJs, "javascript");
+  }
+
   const jsEditor = monaco.editor.create(document.getElementById("js-editor"));
 
   htmlEditor.setModel(htmlDefaultModel);
@@ -189,6 +217,30 @@ require(["vs/editor/editor.main"], () => {
     insertInHtml([sampleCode.omikujiDiv].join("\n"));
     insertInCss([sampleCode.omikujiCss].join("\n"));
     insertInJs([sampleCode.omikujiJs].join("\n"));
+  };
+
+  // localStorageに保存
+  saveButton.onclick = () => {
+    localStorage.setItem("html", htmlEditor.getValue());
+    localStorage.setItem("css", cssEditor.getValue());
+    localStorage.setItem("js", jsEditor.getValue());
+  };
+
+  removeButton.onclick = () => {
+    const result = window.confirm("保存したデータを削除します");
+    if (result) {
+      localStorage.removeItem("html");
+      localStorage.removeItem("css");
+      localStorage.removeItem("js");
+    }
+  };
+
+  testButton.onclick = () => {
+    console.log(localStorage.getItem("html"));
+    console.log(localStorage.getItem("css"));
+    console.log(localStorage.getItem("js"));
+
+    console.log(localStorage.getItem("html") == null);
   };
 
   //ライトテーマ・ダークテーマ変更
