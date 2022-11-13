@@ -9,7 +9,16 @@
     <div id="wrapper">
       <div id="gui-wrapper">
         <h2 id="editor-title">オリジナルアプリを作ろう！</h2>
+        <h2>構造</h2>
         <table>
+          <tr>
+            <td>箱</td>
+            <td>
+              <input id="div-input" type="text" placeholder="箱の名前" />
+            </td>
+            <td><button id="div-button">追加</button></td>
+          </tr>
+          <tr></tr>
           <tr>
             <td>見出し(大)</td>
             <td>
@@ -24,19 +33,42 @@
             </td>
             <td><button id="para-button">追加</button></td>
           </tr>
-          <!-- <tr>
-            <td>箱</td>
+        </table>
+        <h2>見た目</h2>
+        <table>
+          <tr>
+            <th>長さ</th>
+            <td>横</td>
+            <td><input id="width-input" type="text" /></td>
+            <td>縦</td>
+            <td><input id="height-input" type="text" /></td>
+            <td><button id="wh-button">追加</button></td>
+          </tr>
+          <tr>
+            <th>背景の色</th>
             <td>
-              <select id="div-color-select">
-                <option value="">--箱の色--</option>
+              <select id="color-select">
+                <option value="transparent">透明</option>
+                <option value="gray">グレー</option>
+                <option value="lightblue">青</option>
                 <option value="lightpink">ピンク</option>
                 <option value="lightgreen">緑</option>
-                <option value="lightblue">青</option>
+                <!-- もっと追加 -->
               </select>
             </td>
-            <td><button id="div-button">追加</button></td>
-          </tr> -->
+            <td><button id="color-button">追加</button></td>
+          </tr>
         </table>
+
+        <h2>動き</h2>
+        <table>
+          <tr>
+            <td>ランダム</td>
+            <!-- 選択肢個数調整はまた考える -->
+            <td><button id="random-button">追加</button></td>
+          </tr>
+        </table>
+        <h2>テンプレート</h2>
         <table>
           <tr>
             <td>おみくじのテンプレート</td>
@@ -47,12 +79,17 @@
       <div id="editor-wrapper">
         <!-- <h2>エディタ</h2> -->
         <div id="editor-menu">
-          <span id="tab-wrapper">
-            <!-- なぜ間隔が開くのかわからない -->
-            <!-- <button id="html-tab" class="tab-button">構造</button>
+          <span id="button-wrapper">
+            <button id="save-button">保存</button>
+            <button id="remove-button">削除</button>
+            <button id="test-button">てすと</button>
+          </span>
+          <!-- <span id="tab-wrapper"> -->
+          <!-- なぜ間隔が開くのかわからない -->
+          <!-- <button id="html-tab" class="tab-button">構造</button>
             <button id="css-tab" class="tab-button">見た目</button>
             <button id="js-tab" class="tab-button">動き</button> -->
-          </span>
+          <!-- </span> -->
 
           <span id="theme-toggle-wrapper">
             <input id="theme-toggle" type="checkbox" checked />
@@ -63,14 +100,11 @@
         <div id="css-editor" class="editor"></div>
         <div id="js-editor" class="editor"></div>
       </div>
-      <div class="preview-box">
+      <div id="preview-box">
         <h2>プレビュー</h2>
-        <iframe
-          srcdoc=""
-          width="312px"
-          height="675px"
-          id="iframe-elem"
-        ></iframe>
+        <iframe srcdoc="" id="iframe-elem"></iframe>
+
+        <a href="" id="dl-anchor">アプリのファイルをダウンロード！</a>
       </div>
     </div>
     <script src="./node_modules/monaco-editor/min/vs/loader.js"></script>
