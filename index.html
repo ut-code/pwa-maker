@@ -18,26 +18,32 @@
             </td>
             <td><button id="div-button">追加</button></td>
           </tr>
-          <tr></tr>
+          <tr>
+            <td>ボタン</td>
+            <td>
+              <input id="button-input" type="text" placeholder="ボタンの名前" />
+            </td>
+            <td><button id="button-button">追加</button></td>
+          </tr>
           <tr>
             <td>見出し(大)</td>
-            <td>
+            <!-- <td>
               <input type="text" id="h1-input" placeholder="見出し(大)の内容" />
-            </td>
+            </td> -->
             <td><button id="h1-button">追加</button></td>
           </tr>
           <tr>
             <td>段落</td>
-            <td>
+            <!-- <td>
               <input type="text" id="para-input" placeholder="段落の内容" />
-            </td>
+            </td> -->
             <td><button id="para-button">追加</button></td>
           </tr>
         </table>
         <h2>見た目</h2>
         <table>
           <tr>
-            <th>長さ</th>
+            <td>長さ</td>
             <td>横</td>
             <td><input id="width-input" type="text" /></td>
             <td>縦</td>
@@ -45,7 +51,7 @@
             <td><button id="wh-button">追加</button></td>
           </tr>
           <tr>
-            <th>背景の色</th>
+            <td>背景の色</td>
             <td>
               <select id="color-select">
                 <option value="transparent">透明</option>
@@ -67,6 +73,32 @@
             <!-- 選択肢個数調整はまた考える -->
             <td><button id="random-button">追加</button></td>
           </tr>
+          <tr>
+            <td>クリックされた時の動作</td>
+            <td>
+              <input type="text" id="onclick-input" placeholder="箱の名前" />
+            </td>
+            <td><button id="onclick-button">追加</button></td>
+          </tr>
+          <tr>
+            <td>○秒待ってから実行</td>
+            <td><input type="text" id="setTimeOut-input" />秒</td>
+            <td><button id="setTimeOut-button">追加</button></td>
+          </tr>
+          <tr>
+            <td>隠す</td>
+            <td>
+              <input type="text" id="hide-input" placeholder="箱の名前" />
+            </td>
+            <td><button id="hide-button">追加</button></td>
+          </tr>
+          <tr>
+            <td>再表示する</td>
+            <td>
+              <input type="text" id="show-input" placeholder="箱の名前" />
+            </td>
+            <td><button id="show-button">追加</button></td>
+          </tr>
         </table>
         <h2>テンプレート</h2>
         <table>
@@ -77,19 +109,12 @@
         </table>
       </div>
       <div id="editor-wrapper">
-        <!-- <h2>エディタ</h2> -->
         <div id="editor-menu">
           <span id="button-wrapper">
             <button id="save-button">保存</button>
             <button id="remove-button">削除</button>
             <button id="test-button">てすと</button>
           </span>
-          <!-- <span id="tab-wrapper"> -->
-          <!-- なぜ間隔が開くのかわからない -->
-          <!-- <button id="html-tab" class="tab-button">構造</button>
-            <button id="css-tab" class="tab-button">見た目</button>
-            <button id="js-tab" class="tab-button">動き</button> -->
-          <!-- </span> -->
 
           <span id="theme-toggle-wrapper">
             <input id="theme-toggle" type="checkbox" checked />
@@ -103,8 +128,9 @@
       <div id="preview-box">
         <h2>プレビュー</h2>
         <iframe srcdoc="" id="iframe-elem"></iframe>
-
-        <a href="" id="dl-anchor">アプリのファイルをダウンロード！</a>
+        <div>
+          <a href="" id="dl-anchor">アプリのファイルをダウンロード！</a>
+        </div>
       </div>
     </div>
     <script src="./node_modules/monaco-editor/min/vs/loader.js"></script>
