@@ -21,6 +21,8 @@ const heightInput = document.getElementById("height-input");
 const colorButton = document.getElementById("color-button");
 const colorSelect = document.getElementById("color-select");
 
+const textAlignButton = document.getElementById("text-align-button");
+
 const onclickButton = document.getElementById("onclick-button");
 const onclickInput = document.getElementById("onclick-input");
 
@@ -297,6 +299,10 @@ require(["vs/editor/editor.main"], () => {
     insertInCssAtCursor(
       `background-color: ${colorSelect.value}; /* 背景の色 */\n\t`
     );
+  };
+
+  textAlignButton.onclick = () => {
+    insertInCssAtCursor(`text-align: center; /* 文字等を中央揃え */\n\t`);
   };
 
   randomButton.onclick = () => {
