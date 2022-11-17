@@ -121,18 +121,29 @@ require(["vs/editor/editor.main"], () => {
     const headBeforeText = htmlText.slice(0, headEndPoint);
     const headAfterText = htmlText.slice(headEndPoint);
 
-    htmlText = headBeforeText + `<style>${cssValue}</style>` + headAfterText;
+    htmlText =
+      headBeforeText +
+      `<link rel="manifest" href="../manifest.json" />\n` +
+      `<style>${cssValue}</style>\n` +
+      headAfterText;
 
     const bodyEndPoint = htmlText.indexOf("</body>");
 
     const bodyBeforeText = htmlText.slice(0, bodyEndPoint);
     const bodyAfterText = htmlText.slice(bodyEndPoint);
 
-    htmlText = bodyBeforeText + `<script>${jsValue}</script>` + bodyAfterText;
+    htmlText = bodyBeforeText + `<script>${jsValue}</script>\n` + bodyAfterText;
 
     iframeElem.srcdoc = [htmlText].join("\n");
 
-    const blob = new Blob([htmlText], { type: "text/html" });
+    const scriptStart = htmlText.indexOf("<script>");
+
+    const beforeScript = htmlText.slice(0, scriptStart);
+    const afterScript = htmlText.slice(scriptStart);
+
+    const dlText = beforeScript + sampleCode.serviceWorkerScript + afterScript;
+
+    const blob = new Blob([dlText], { type: "text/html" });
     dlAnchor.href = URL.createObjectURL(blob);
     dlAnchor.download = "index.html";
     // dlAnchor.textContent = "アプリのファイルをダウンロード！";
