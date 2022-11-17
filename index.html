@@ -165,10 +165,8 @@
         
         </div>
       </div>
-
-      
       <div id="editor-wrapper">
-        <div id="editor-menu" class="navbar navbar-light bg-light">
+        <div id="editor-menu" class="navbar navbar-light">
           <span id="button-wrapper">
             <button class="btn btn-outline-secondary btn-sm" id="save-button">保存</button>
             <button class="btn btn-outline-secondary btn-sm" id="remove-button">削除</button>
@@ -181,6 +179,8 @@
             <label for="theme-toggle" class="form-check-label">ダークテーマ</label>
           </div>
         </div>
+
+        
         <div id="html-editor" class="editor"></div>
         <div id="css-editor" class="editor"></div>
         <div id="js-editor" class="editor"></div>
@@ -200,6 +200,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="./node_modules/monaco-editor/min/vs/loader.js"></script>
+    <script src="./shortcut.js"></script>
     <script type="module" src="./script.js"></script>
   </body>
 </html>
