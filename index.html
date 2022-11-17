@@ -2,6 +2,12 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="./style.css" />
     <title>PWA-Maker</title>
   </head>
@@ -9,24 +15,25 @@
     <div id="wrapper">
       <div id="gui-wrapper">
         <h2 id="editor-title">オリジナルアプリを作ろう！</h2>
-        <h2>構造</h2>
-        <table>
+        <h3>構造</h3>
+        <table class="table">
           <tr>
             <td>箱</td>
             <td>
-              <input id="div-input" type="text" placeholder="箱の名前" />
+              <input id="div-input" type="text" placeholder="名前" />
             </td>
             <td><button id="div-button">追加</button></td>
           </tr>
           <tr>
             <td>ボタン</td>
             <td>
-              <input id="button-input" type="text" placeholder="ボタンの名前" />
+              <input id="button-input" type="text" placeholder="名前" />
             </td>
             <td><button id="button-button">追加</button></td>
           </tr>
           <tr>
             <td>見出し(大)</td>
+            <td></td>
             <!-- <td>
               <input type="text" id="h1-input" placeholder="見出し(大)の内容" />
             </td> -->
@@ -34,21 +41,24 @@
           </tr>
           <tr>
             <td>段落</td>
+            <td></td>
             <!-- <td>
               <input type="text" id="para-input" placeholder="段落の内容" />
             </td> -->
             <td><button id="para-button">追加</button></td>
           </tr>
         </table>
-        <h2>見た目</h2>
-        <table>
+        <h3>見た目</h3>
+        <table class="table">
           <tr>
             <td>長さ</td>
-            <td>横</td>
-            <td><input id="width-input" type="text" /></td>
-            <td>縦</td>
-            <td><input id="height-input" type="text" /></td>
+            <td>横: <input id="width-input" type="text" /></td>
+            
+          <tr>
+            <td></td>
+            <td>縦: <input id="height-input" type="text" /></td>
             <td><button id="wh-button">追加</button></td>
+          </tr>
           </tr>
           <tr>
             <td>背景の色</td>
@@ -66,17 +76,18 @@
           </tr>
         </table>
 
-        <h2>動き</h2>
-        <table>
+        <h3>動き</h3>
+        <table class="table">
           <tr>
             <td>ランダム</td>
+            <td></td>
             <!-- 選択肢個数調整はまた考える -->
             <td><button id="random-button">追加</button></td>
           </tr>
           <tr>
-            <td>クリックされた時の動作</td>
+            <td>クリック時の動作</td>
             <td>
-              <input type="text" id="onclick-input" placeholder="箱の名前" />
+              <input type="text" id="onclick-input" placeholder="名前" />
             </td>
             <td><button id="onclick-button">追加</button></td>
           </tr>
@@ -88,20 +99,20 @@
           <tr>
             <td>隠す</td>
             <td>
-              <input type="text" id="hide-input" placeholder="箱の名前" />
+              <input type="text" id="hide-input" placeholder="名前" />
             </td>
             <td><button id="hide-button">追加</button></td>
           </tr>
           <tr>
             <td>再表示する</td>
             <td>
-              <input type="text" id="show-input" placeholder="箱の名前" />
+              <input type="text" id="show-input" placeholder="名前" />
             </td>
             <td><button id="show-button">追加</button></td>
           </tr>
         </table>
-        <h2>テンプレート</h2>
-        <table>
+        <h3>テンプレート</h3>
+        <table class="table">
           <tr>
             <td>おみくじのテンプレート</td>
             <td><button id="omikuji-button">追加</button></td>
@@ -113,7 +124,6 @@
           <span id="button-wrapper">
             <button id="save-button">保存</button>
             <button id="remove-button">削除</button>
-            <button id="test-button">てすと</button>
           </span>
 
           <span id="theme-toggle-wrapper">
@@ -126,13 +136,18 @@
         <div id="js-editor" class="editor"></div>
       </div>
       <div id="preview-box">
-        <h2>プレビュー</h2>
+        <h3>プレビュー</h3>
         <iframe srcdoc="" id="iframe-elem"></iframe>
         <div>
           <a href="" id="dl-anchor">アプリのファイルをダウンロード！</a>
         </div>
       </div>
     </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
     <script src="./node_modules/monaco-editor/min/vs/loader.js"></script>
     <script type="module" src="./script.js"></script>
   </body>

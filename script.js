@@ -41,7 +41,6 @@ const iframeElem = document.getElementById("iframe-elem");
 const saveButton = document.getElementById("save-button");
 const removeButton = document.getElementById("remove-button");
 
-// const testButton = document.getElementById("test-button");
 const themeToggle = document.getElementById("theme-toggle");
 
 const dlAnchor = document.getElementById("dl-anchor");
@@ -293,13 +292,9 @@ require(["vs/editor/editor.main"], () => {
     }
   };
 
-  // testButton.onclick = () => {
-  //   console.log(localStorage.getItem("html"));
-  //   console.log(localStorage.getItem("css"));
-  //   console.log(localStorage.getItem("js"));
-
-  //   console.log(localStorage.getItem("html") == null);
-  // };
+  window.onbeforeunload = (e) => {
+    // e.returnValue = "作業内容が保存されていません、よろしいですか？";
+  };
 
   //ライトテーマ・ダークテーマ変更
   const changeTheme = () => {
