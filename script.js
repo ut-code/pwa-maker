@@ -99,8 +99,17 @@ require(["vs/editor/editor.main"], () => {
   const jsEditor = monaco.editor.create(document.getElementById("js-editor"));
 
   htmlEditor.setModel(htmlDefaultModel);
+  htmlEditor.updateOptions({
+    fontSize: 14,
+  });
   cssEditor.setModel(cssDefaultModel);
+  cssEditor.updateOptions({
+    fontSize: 14,
+  });
   jsEditor.setModel(jsDefaultModel);
+  jsEditor.updateOptions({
+    fontSize: 14,
+  });
 
   const allReflect = () => {
     let htmlText = htmlEditor.getValue();

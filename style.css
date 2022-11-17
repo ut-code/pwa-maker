@@ -17,6 +17,12 @@ input {
   justify-content: space-around;
 }
 
+@media (max-width: 800px) {
+  wrapper {
+    flex-flow: column;
+  }
+}
+
 #iframe-elem {
   width: calc(0.46 * 85vh);
   height: 85vh;
