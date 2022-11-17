@@ -1,3 +1,7 @@
+.title {
+  margin: 20px 0;
+}
+
 input {
   width: 100px;
 }
@@ -23,13 +27,13 @@ input {
 #editor-menu {
   display: flex;
   justify-content: space-between;
-  background-color: #ddd;
+  /* background-color: #ddd; */
 }
 
 .editor {
   width: 40vw;
   height: 31vh;
-  border: 1px solid grey;
+  border: 1px solid #aaa;
 }
 
 /* タブ切り替え機能 */
