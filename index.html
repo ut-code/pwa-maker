@@ -2,6 +2,7 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -13,133 +14,182 @@
   </head>
   <body>
     <div id="wrapper">
+
+
       <div id="gui-wrapper">
-        <h2 id="editor-title">オリジナルアプリを作ろう！</h2>
-        <h3>構造</h3>
-        <table class="table">
-          <tr>
-            <td>箱</td>
-            <td>
-              <input id="div-input" type="text" placeholder="名前" />
-            </td>
-            <td><button id="div-button">追加</button></td>
-          </tr>
-          <tr>
-            <td>ボタン</td>
-            <td>
-              <input id="button-input" type="text" placeholder="名前" />
-            </td>
-            <td><button id="button-button">追加</button></td>
-          </tr>
-          <tr>
-            <td>見出し(大)</td>
-            <td></td>
-            <!-- <td>
-              <input type="text" id="h1-input" placeholder="見出し(大)の内容" />
-            </td> -->
-            <td><button id="h1-button">追加</button></td>
-          </tr>
-          <tr>
-            <td>段落</td>
-            <td></td>
-            <!-- <td>
-              <input type="text" id="para-input" placeholder="段落の内容" />
-            </td> -->
-            <td><button id="para-button">追加</button></td>
-          </tr>
-        </table>
-        <h3>見た目</h3>
-        <table class="table">
-          <tr>
-            <td>長さ</td>
-            <td>横: <input id="width-input" type="text" /></td>
-            
-          <tr>
-            <td></td>
-            <td>縦: <input id="height-input" type="text" /></td>
-            <td><button id="wh-button">追加</button></td>
-          </tr>
-          </tr>
-          <tr>
-            <td>背景の色</td>
-            <td>
-              <select id="color-select">
-                <option value="transparent">透明</option>
-                <option value="gray">グレー</option>
-                <option value="lightblue">青</option>
-                <option value="lightpink">ピンク</option>
-                <option value="lightgreen">緑</option>
-                <!-- もっと追加 -->
-              </select>
-            </td>
-            <td><button id="color-button">追加</button></td>
-          </tr>
-        </table>
-
-        <h3>動き</h3>
-        <table class="table">
-          <tr>
-            <td>ランダム</td>
-            <td></td>
-            <!-- 選択肢個数調整はまた考える -->
-            <td><button id="random-button">追加</button></td>
-          </tr>
-          <tr>
-            <td>クリック時の動作</td>
-            <td>
-              <input type="text" id="onclick-input" placeholder="名前" />
-            </td>
-            <td><button id="onclick-button">追加</button></td>
-          </tr>
-          <tr>
-            <td>○秒待ってから実行</td>
-            <td><input type="text" id="setTimeOut-input" />秒</td>
-            <td><button id="setTimeOut-button">追加</button></td>
-          </tr>
-          <tr>
-            <td>隠す</td>
-            <td>
-              <input type="text" id="hide-input" placeholder="名前" />
-            </td>
-            <td><button id="hide-button">追加</button></td>
-          </tr>
-          <tr>
-            <td>再表示する</td>
-            <td>
-              <input type="text" id="show-input" placeholder="名前" />
-            </td>
-            <td><button id="show-button">追加</button></td>
-          </tr>
-        </table>
-        <h3>テンプレート</h3>
-        <table class="table">
-          <tr>
-            <td>おみくじのテンプレート</td>
-            <td><button id="omikuji-button">追加</button></td>
-          </tr>
-        </table>
+        <h2 class="title">オリジナルアプリを作ろう！</h2>
+        <div class="accordion" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                構造
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
+              <div class="accordion-body">
+                <table class="table">
+                  <tr>
+                    <td>箱</td>
+                    <td>
+                      <input id="div-input" type="text" placeholder="名前" />
+                    </td>
+                    <td><button class="btn btn-outline-secondary btn-sm" id="div-button">追加</button></td>
+                  </tr>
+                  <tr>
+                    <td>ボタン</td>
+                    <td>
+                      <input id="button-input" type="text" placeholder="名前" />
+                    </td>
+                    <td><button class="btn btn-outline-secondary btn-sm" id="button-button">追加</button></td>
+                  </tr>
+                  <tr>
+                    <td>見出し(大)</td>
+                    <td></td>
+                    <!-- <td>
+                      <input type="text" id="h1-input" placeholder="見出し(大)の内容" />
+                    </td> -->
+                    <td><button class="btn btn-outline-secondary btn-sm" id="h1-button">追加</button></td>
+                  </tr>
+                  <tr>
+                    <td>段落</td>
+                    <td></td>
+                    <!-- <td>
+                      <input type="text" id="para-input" placeholder="段落の内容" />
+                    </td> -->
+                    <td><button class="btn btn-outline-secondary btn-sm" id="para-button">追加</button></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                見た目
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo">
+              <div class="accordion-body">
+                <table class="table">
+                  <tr>
+                    <td>長さ</td>
+                    <td>横: <input id="width-input" type="text" /></td>
+                    
+                  <tr>
+                    <td></td>
+                    <td>縦: <input id="height-input" type="text" /></td>
+                    <td><button class="btn btn-outline-secondary btn-sm" id="wh-button">追加</button></td>
+                  </tr>
+                  </tr>
+                  <tr>
+                    <td>背景の色</td>
+                    <td>
+                      <select id="color-select">
+                        <option value="transparent">透明</option>
+                        <option value="gray">グレー</option>
+                        <option value="lightblue">青</option>
+                        <option value="lightpink">ピンク</option>
+                        <option value="lightgreen">緑</option>
+                        <!-- もっと追加 -->
+                      </select>
+                    </td>
+                    <td><button class="btn btn-outline-secondary btn-sm" id="color-button">追加</button></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                動き
+              </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree">
+              <div class="accordion-body">
+                <table class="table">
+                  <tr>
+                    <td>ランダム</td>
+                    <td></td>
+                    <!-- 選択肢個数調整はまた考える -->
+                    <td><button class="btn btn-outline-secondary btn-sm" id="random-button">追加</button></td>
+                  </tr>
+                  <tr>
+                    <td>クリック時の動作</td>
+                    <td>
+                      <input type="text" id="onclick-input" placeholder="名前" />
+                    </td>
+                    <td><button class="btn btn-outline-secondary btn-sm" id="onclick-button">追加</button></td>
+                  </tr>
+                  <tr>
+                    <td>○秒待ってから実行</td>
+                    <td><input type="text" id="setTimeOut-input" />秒</td>
+                    <td><button class="btn btn-outline-secondary btn-sm" id="setTimeOut-button">追加</button></td>
+                  </tr>
+                  <tr>
+                    <td>隠す</td>
+                    <td>
+                      <input type="text" id="hide-input" placeholder="名前" />
+                    </td>
+                    <td><button class="btn btn-outline-secondary btn-sm" id="hide-button">追加</button></td>
+                  </tr>
+                  <tr>
+                    <td>再表示する</td>
+                    <td>
+                      <input type="text" id="show-input" placeholder="名前" />
+                    </td>
+                    <td><button class="btn btn-outline-secondary btn-sm" id="show-button">追加</button></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFour">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                テンプレート
+              </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingFour">
+              <div class="accordion-body">
+                <table class="table">
+                  <tr>
+                    <td>おみくじのテンプレート</td>
+                    <td><button class="btn btn-outline-secondary btn-sm" id="omikuji-button">追加</button></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+
+      
       <div id="editor-wrapper">
-        <div id="editor-menu">
+        
+        <div id="editor-menu" class="navbar navbar-light bg-light">
           <span id="button-wrapper">
-            <button id="save-button">保存</button>
-            <button id="remove-button">削除</button>
+            <button class="btn btn-outline-secondary btn-sm" id="save-button">保存</button>
+            <button class="btn btn-outline-secondary btn-sm" id="remove-button">削除</button>
           </span>
 
-          <span id="theme-toggle-wrapper">
-            <input id="theme-toggle" type="checkbox" checked />
-            <label for="theme-toggle">ダークテーマ</label>
-          </span>
+
+          <div id="theme-toggle-wrapper" class="form-check form-switch">
+            
+            <input id="theme-toggle" type="checkbox" class="form-check-input" checked />
+            <label for="theme-toggle" class="form-check-label">ダークテーマ</label>
+          </div>
         </div>
         <div id="html-editor" class="editor"></div>
         <div id="css-editor" class="editor"></div>
         <div id="js-editor" class="editor"></div>
       </div>
+      
       <div id="preview-box">
-        <h3>プレビュー</h3>
-        <iframe srcdoc="" id="iframe-elem"></iframe>
+        <h3 class="title">プレビュー</h3>
+        <iframe srcdoc="" id="iframe-elem" class="border"></iframe>
         <div>
-          <a href="" id="dl-anchor">アプリのファイルをダウンロード！</a>
+          <a href="" id="dl-anchor" class="btn btn-outline-primary btn-sm">アプリをダウンロード！</a>
         </div>
       </div>
     </div>
