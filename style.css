@@ -18,7 +18,7 @@ input {
 }
 
 @media (max-width: 800px) {
-  wrapper {
+  #wrapper {
     flex-flow: column;
   }
 }
@@ -33,7 +33,6 @@ input {
 #editor-menu {
   display: flex;
   justify-content: space-between;
-  /* background-color: #ddd; */
 }
 
 .editor {
