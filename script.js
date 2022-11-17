@@ -325,6 +325,7 @@ require(["vs/editor/editor.main"], () => {
     insertInJsAtBottom([sampleCode.omikujiJs].join("\n"));
   };
 
+
   // localStorageに保存
   saveButton.onclick = () => {
     localStorage.setItem("html", htmlEditor.getValue());
@@ -444,3 +445,54 @@ require(["vs/editor/editor.main"], () => {
   //   }
   // };
 });
+
+
+const dbWriteButton = document.getElementById("write-to-db-button");
+dbWriteButton.onclick = async () => {
+	const username = document.getElementById("username").value;
+	console.log(username)
+	const html = localStorage.getItem("html");
+	const css = localStorage.getItem("css");
+	const js = localStorage.getItem("js");
+	console.log(html, css, js)
+	const response = await fetch(
+		"http://localhost:3000/postuser/", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				username: username,
+				html: html,
+				css: css,
+				js: js,
+			}),
+		})
+	data = await response.text()
+	console.log(data)
+}
+
+const dbReadButton = document.getElementById("read-from-db-button");
+dbReadButton.onclick =	async () => {
+	const username = document.getElementById("username").value;
+	const response = await fetch(
+		"http://localhost:3000/getuser/", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				username: username,
+			}),
+		})
+	data = await response.json()
+	console.log(data)
+	localStorage.setItem("html", data.html);
+	localStorage.setItem("css", data.css);
+	localStorage.setItem("js", data.js);
+
+	htmlEditor.setValue(data.html);
+	cssEditor.setValue(data.css);
+	jsEditor.setValue(data.js);
+}
+
