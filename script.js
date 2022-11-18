@@ -14,6 +14,9 @@ const divInput = document.getElementById("div-input");
 const buttonButton = document.getElementById("button-button");
 const buttonInput = document.getElementById("button-input");
 
+const inputButton = document.getElementById("input-button");
+const inputInput = document.getElementById("input-input");
+
 const whButton = document.getElementById("wh-button");
 const widthInput = document.getElementById("width-input");
 const heightInput = document.getElementById("height-input");
@@ -30,6 +33,9 @@ const randomButton = document.getElementById("random-button");
 const setTimeOutButton = document.getElementById("setTimeOut-button");
 const setTimeOutInput = document.getElementById("setTimeOut-input");
 
+const textContentButton = document.getElementById("text-content-button");
+const textContentInput = document.getElementById("text-content-input");
+
 const hideButton = document.getElementById("hide-button");
 const hideInput = document.getElementById("hide-input");
 
@@ -37,6 +43,7 @@ const showButton = document.getElementById("show-button");
 const showInput = document.getElementById("show-input");
 
 const omikujiButton = document.getElementById("omikuji-button");
+const bmiButton = document.getElementById("bmi-button");
 
 const iframeElem = document.getElementById("iframe-elem");
 
@@ -272,7 +279,7 @@ require(["vs/editor/editor.main"], () => {
     insertInCssAtBottom(
       `#${divInput.value} {\n\t/* この中で「${divInput.value}」の見た目を調整 */\n}\n`
     );
-    insertInJsAtBottom(
+    insertInJsAtTop(
       `const ${divInput.value} = document.getElementById("${divInput.value}");\n`
     );
   };
@@ -285,7 +292,19 @@ require(["vs/editor/editor.main"], () => {
       `#${buttonInput.value} {\n\t/* この中で「${buttonInput.value}」の見た目を調整 */\n}\n`
     );
     insertInJsAtBottom(
-      `const ${buttonInput.value} = document.getElementById("${buttonInput.value}");\n${buttonInput.value}.onclick = () => {\n\t// 「${divInput.value}」がクリックされたときの動作\n\t\n}\n`
+      `const ${buttonInput.value} = document.getElementById("${buttonInput.value}");\n`
+    );
+  };
+
+  inputButton.onclick = () => {
+    insertInHtmlAtBodyBottom(
+      `\t\t<input id="${inputInput.value}" type="text"/>\n`
+    );
+    insertInCssAtBottom(
+      `#${inputInput.value} {\n\t/* この中で「${inputInput.value}」の見た目を調整 */\n}\n`
+    );
+    insertInJsAtBottom(
+      `const ${inputInput.value} = document.getElementById("${inputInput.value}");\n`
     );
   };
 
@@ -328,6 +347,12 @@ require(["vs/editor/editor.main"], () => {
     );
   };
 
+  textContentButton.onclick = () => {
+    insertInJsAtCursor(
+      `${textContentInput.value}.textContent = "この文字に変わります";\r\n\t\t\t`
+    );
+  };
+
   hideButton.onclick = () => {
     insertInJsAtCursor(`${hideInput.value}.style.display = "none";\r\n\t\t\t`);
   };
@@ -340,6 +365,12 @@ require(["vs/editor/editor.main"], () => {
     insertInHtmlAtBodyBottom([sampleCode.omikujiDiv].join("\n"));
     insertInCssAtBottom([sampleCode.omikujiCss].join("\n"));
     insertInJsAtBottom([sampleCode.omikujiJs].join("\n"));
+  };
+
+  bmiButton.onclick = () => {
+    insertInHtmlAtBodyBottom([sampleCode.bmiDiv].join("\n"));
+    insertInCssAtBottom([sampleCode.bmiCss].join("\n"));
+    insertInJsAtBottom([sampleCode.bmiJs].join("\n"));
   };
 
   // localStorageに保存
