@@ -8,11 +8,17 @@ const h1Button = document.getElementById("h1-button");
 const paraButton = document.getElementById("para-button");
 // const paraInput = document.getElementById("para-input");
 
+const ulButton = document.getElementById("ul-button");
+const ulInput = document.getElementById("ul-input");
+
 const divButton = document.getElementById("div-button");
 const divInput = document.getElementById("div-input");
 
 const buttonButton = document.getElementById("button-button");
 const buttonInput = document.getElementById("button-input");
+
+const inputButton = document.getElementById("input-button");
+const inputInput = document.getElementById("input-input");
 
 const whButton = document.getElementById("wh-button");
 const widthInput = document.getElementById("width-input");
@@ -21,12 +27,20 @@ const heightInput = document.getElementById("height-input");
 const colorButton = document.getElementById("color-button");
 const colorSelect = document.getElementById("color-select");
 
+const textAlignButton = document.getElementById("text-align-button");
+
 const onclickButton = document.getElementById("onclick-button");
 const onclickInput = document.getElementById("onclick-input");
+
+const rightClickButton = document.getElementById("right-click-button");
+const rightClickInput = document.getElementById("right-click-input");
 
 const randomButton = document.getElementById("random-button");
 const setTimeOutButton = document.getElementById("setTimeOut-button");
 const setTimeOutInput = document.getElementById("setTimeOut-input");
+
+const textContentButton = document.getElementById("text-content-button");
+const textContentInput = document.getElementById("text-content-input");
 
 const hideButton = document.getElementById("hide-button");
 const hideInput = document.getElementById("hide-input");
@@ -35,6 +49,8 @@ const showButton = document.getElementById("show-button");
 const showInput = document.getElementById("show-input");
 
 const omikujiButton = document.getElementById("omikuji-button");
+const bmiButton = document.getElementById("bmi-button");
+const todoButton = document.getElementById("todo-button");
 
 const iframeElem = document.getElementById("iframe-elem");
 
@@ -121,18 +137,29 @@ require(["vs/editor/editor.main"], () => {
     const headBeforeText = htmlText.slice(0, headEndPoint);
     const headAfterText = htmlText.slice(headEndPoint);
 
-    htmlText = headBeforeText + `<style>${cssValue}</style>` + headAfterText;
+    htmlText =
+      headBeforeText +
+      `<link rel="manifest" href="./manifest.json" />\n` +
+      `<style>${cssValue}</style>\n` +
+      headAfterText;
 
     const bodyEndPoint = htmlText.indexOf("</body>");
 
     const bodyBeforeText = htmlText.slice(0, bodyEndPoint);
     const bodyAfterText = htmlText.slice(bodyEndPoint);
 
-    htmlText = bodyBeforeText + `<script>${jsValue}</script>` + bodyAfterText;
+    htmlText = bodyBeforeText + `<script>${jsValue}</script>\n` + bodyAfterText;
 
     iframeElem.srcdoc = [htmlText].join("\n");
 
-    const blob = new Blob([htmlText], { type: "text/html" });
+    const scriptStart = htmlText.indexOf("<script>");
+
+    const beforeScript = htmlText.slice(0, scriptStart);
+    const afterScript = htmlText.slice(scriptStart);
+
+    const dlText = beforeScript + sampleCode.serviceWorkerScript + afterScript;
+
+    const blob = new Blob([dlText], { type: "text/html" });
     dlAnchor.href = URL.createObjectURL(blob);
     dlAnchor.download = "index.html";
     // dlAnchor.textContent = "アプリのファイルをダウンロード！";
@@ -252,6 +279,18 @@ require(["vs/editor/editor.main"], () => {
     insertInHtmlAtBodyBottom(`\t\t<p>段落</p>\n`);
   };
 
+  ulButton.onclick = () => {
+    insertInHtmlAtBodyBottom(
+      `    <ul id=\"\">\r\n        <li><\/li>\r\n    <\/ul>\r\n`
+    );
+    insertInCssAtBottom(
+      `#${ulInput.value} {\n\t/* この中で「${ulInput.value}」の見た目を調整 */\n}\n`
+    );
+    insertInJsAtTop(
+      `const ${ulInput.value} = document.getElementById("${ulInput.value}");\n`
+    );
+  };
+
   divButton.onclick = () => {
     insertInHtmlAtBodyBottom(
       `\t\t<div id="${divInput.value}">テキスト</div>\n`
@@ -259,7 +298,7 @@ require(["vs/editor/editor.main"], () => {
     insertInCssAtBottom(
       `#${divInput.value} {\n\t/* この中で「${divInput.value}」の見た目を調整 */\n}\n`
     );
-    insertInJsAtBottom(
+    insertInJsAtTop(
       `const ${divInput.value} = document.getElementById("${divInput.value}");\n`
     );
   };
@@ -272,7 +311,19 @@ require(["vs/editor/editor.main"], () => {
       `#${buttonInput.value} {\n\t/* この中で「${buttonInput.value}」の見た目を調整 */\n}\n`
     );
     insertInJsAtBottom(
-      `const ${buttonInput.value} = document.getElementById("${buttonInput.value}");\n${buttonInput.value}.onclick = () => {\n\t// 「${divInput.value}」がクリックされたときの動作\n\t\n}\n`
+      `const ${buttonInput.value} = document.getElementById("${buttonInput.value}");\n`
+    );
+  };
+
+  inputButton.onclick = () => {
+    insertInHtmlAtBodyBottom(
+      `\t\t<input id="${inputInput.value}" type="text"/>\n`
+    );
+    insertInCssAtBottom(
+      `#${inputInput.value} {\n\t/* この中で「${inputInput.value}」の見た目を調整 */\n}\n`
+    );
+    insertInJsAtBottom(
+      `const ${inputInput.value} = document.getElementById("${inputInput.value}");\n`
     );
   };
 
@@ -286,6 +337,10 @@ require(["vs/editor/editor.main"], () => {
     insertInCssAtCursor(
       `background-color: ${colorSelect.value}; /* 背景の色 */\n\t`
     );
+  };
+
+  textAlignButton.onclick = () => {
+    insertInCssAtCursor(`text-align: center; /* 文字等を中央揃え */\n\t`);
   };
 
   randomButton.onclick = () => {
@@ -303,11 +358,26 @@ require(["vs/editor/editor.main"], () => {
     );
   };
 
+  rightClickButton.onclick = () => {
+    insertInJsAtTop(
+      `const ${rightClickInput.value} = document.getElementById("${rightClickInput.value}");\n`
+    );
+    insertInJsAtCursor(
+      `${rightClickInput.value}.addEventListener(\"contextmenu\", (e) => {\r\n    \/\/ \u53f3\u30af\u30ea\u30c3\u30af\u3055\u308c\u305f\u3068\u304d\r\n    \/\/ \u53f3\u30af\u30ea\u30c3\u30af\u306e\u30e1\u30cb\u30e5\u30fc\u3092\u8868\u793a\u3057\u306a\u3044\r\n    e.preventDefault();\r\n    \/\/ \u884c\u3046\u51e6\u7406\r\n    \r\n  });\n`
+    );
+  };
+
   setTimeOutButton.onclick = () => {
     insertInJsAtCursor(
       `setTimeout(() => {\r\n\t\t\t\/\/ (\u4e0b\u306e\u6570\u5b57\u00f71000)\u79d2\u5f85\u3063\u3066\u304b\u3089\u4ee5\u4e0b\u306b\u66f8\u3044\u305f\u64cd\u4f5c\u3092\u5b9f\u884c\u3059\u308b\r\n\t    }, ${
         setTimeOutInput.value * 1000
       });\r\n\t\t`
+    );
+  };
+
+  textContentButton.onclick = () => {
+    insertInJsAtCursor(
+      `${textContentInput.value}.textContent = "この文字に変わります";\r\n\t\t\t`
     );
   };
 
@@ -323,6 +393,18 @@ require(["vs/editor/editor.main"], () => {
     insertInHtmlAtBodyBottom([sampleCode.omikujiDiv].join("\n"));
     insertInCssAtBottom([sampleCode.omikujiCss].join("\n"));
     insertInJsAtBottom([sampleCode.omikujiJs].join("\n"));
+  };
+
+  bmiButton.onclick = () => {
+    insertInHtmlAtBodyBottom([sampleCode.bmiDiv].join("\n"));
+    insertInCssAtBottom([sampleCode.bmiCss].join("\n"));
+    insertInJsAtBottom([sampleCode.bmiJs].join("\n"));
+  };
+
+  todoButton.onclick = () => {
+    insertInHtmlAtBodyBottom([sampleCode.todoDiv].join("\n"));
+    insertInCssAtBottom([sampleCode.todoCss].join("\n"));
+    insertInJsAtBottom([sampleCode.todoJs].join("\n"));
   };
 
 
