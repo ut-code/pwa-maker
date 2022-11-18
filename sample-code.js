@@ -1,6 +1,6 @@
 export default {
   htmlCode:
-    '<!DOCTYPE html>\n<html lang="ja">\n\t<head>\n\t\t<meta charset="UTF-8" />\n\t\t<meta name="viewport" content="width=device-width, initial-scale=1.0" />\n\t\t<title>Document</title>\n\t</head>\n\t<body>\n\t\t<h1 id="app_daimei">Hello PWA!</h1>\n\t\t<p id="app_shoukai">自由に書き換えてみましょう。</p>\n\t</body>\n</html>\n',
+    '<!DOCTYPE html>\n<html lang="ja">\n\t<head>\n\t\t<meta charset="UTF-8" />\n\t\t<meta name="viewport" content="width=device-width, initial-scale=1.0" />\n\t\t<title>My App</title>\n\t</head>\n\t<body>\n\t\t<h1 id="app_daimei">Hello PWA!</h1>\n\t\t<p id="app_shoukai">自由に書き換えてみましょう。</p>\n\t</body>\n</html>\n',
   cssCode:
     "#app_daimei {\n\t/* この中で「app_daimei」の見た目を調整 */\n\ttext-align: center; /* 文字等を中央揃え */\n}\n#app_shoukai {\n\t/* この中で「app_shoukai」の見た目を調整 */\n\ttext-align: center; /* 文字等を中央揃え */\n}\n",
   jsCode:
