@@ -32,6 +32,9 @@ const textAlignButton = document.getElementById("text-align-button");
 const onclickButton = document.getElementById("onclick-button");
 const onclickInput = document.getElementById("onclick-input");
 
+const rightClickButton = document.getElementById("right-click-button");
+const rightClickInput = document.getElementById("right-click-input");
+
 const randomButton = document.getElementById("random-button");
 const setTimeOutButton = document.getElementById("setTimeOut-button");
 const setTimeOutInput = document.getElementById("setTimeOut-input");
@@ -352,6 +355,15 @@ require(["vs/editor/editor.main"], () => {
     );
     insertInJsAtCursor(
       `${onclickInput.value}.onclick = () => {\n\t// 「${onclickInput.value}」がクリックされたときの動作\n\t\n}\n`
+    );
+  };
+
+  rightClickButton.onclick = () => {
+    insertInJsAtTop(
+      `const ${rightClickInput.value} = document.getElementById("${rightClickInput.value}");\n`
+    );
+    insertInJsAtCursor(
+      `${rightClickInput.value}.addEventListener(\"contextmenu\", (e) => {\r\n    \/\/ \u53f3\u30af\u30ea\u30c3\u30af\u3055\u308c\u305f\u3068\u304d\r\n    \/\/ \u53f3\u30af\u30ea\u30c3\u30af\u306e\u30e1\u30cb\u30e5\u30fc\u3092\u8868\u793a\u3057\u306a\u3044\r\n    e.preventDefault();\r\n    \/\/ \u884c\u3046\u51e6\u7406\r\n    \r\n  });\n`
     );
   };
 
