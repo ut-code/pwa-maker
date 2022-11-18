@@ -456,7 +456,8 @@ dbWriteButton.onclick = async () => {
 	const js = localStorage.getItem("js");
 	console.log(html, css, js)
 	const response = await fetch(
-		"http://localhost:3000/postuser/", {
+		// "http://localhost:3000/postuser/", {
+			"https://pwa-maker-backend-api.onrender.com/postuser", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -476,7 +477,8 @@ const dbReadButton = document.getElementById("read-from-db-button");
 dbReadButton.onclick =	async () => {
 	const username = document.getElementById("username").value;
 	const response = await fetch(
-		"http://localhost:3000/getuser/", {
+		// "http://localhost:3000/getuser/", {
+			"https://pwa-maker-backend-api.onrender.com/getuser", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
