@@ -25,6 +25,9 @@ app.get('/', (req, res) => {
 app.post('/postuser', (request, response) => {
 	  const { username, html, css, js } = request.body;
 	//   if name is in db, update, else create
+	  if (!(html && css && js)) {
+			response.status(400).send('Missing fields');
+	   }
 	  prisma.user.findUnique({
 		  where: {
 			  username: username
