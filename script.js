@@ -2,11 +2,13 @@ import sampleCode from "./sample-code.js";
 
 require.config({ paths: { vs: "./node_modules/monaco-editor/min/vs" } });
 
+const helpButton = document.getElementById("help-button");
+
 const h1Button = document.getElementById("h1-button");
-// const h1Input = document.getElementById("h1-input");
+const h1Input = document.getElementById("h1-input");
 
 const paraButton = document.getElementById("para-button");
-// const paraInput = document.getElementById("para-input");
+const paraInput = document.getElementById("para-input");
 
 const ulButton = document.getElementById("ul-button");
 const ulInput = document.getElementById("ul-input");
@@ -27,6 +29,8 @@ const heightInput = document.getElementById("height-input");
 const colorButton = document.getElementById("color-button");
 const colorSelect = document.getElementById("color-select");
 
+const fsLargeButton = document.getElementById("fs-large-button");
+const fwBoldButton = document.getElementById("fw-bold-button");
 const textAlignButton = document.getElementById("text-align-button");
 
 const onclickButton = document.getElementById("onclick-button");
@@ -38,6 +42,10 @@ const rightClickInput = document.getElementById("right-click-input");
 const randomButton = document.getElementById("random-button");
 const setTimeOutButton = document.getElementById("setTimeOut-button");
 const setTimeOutInput = document.getElementById("setTimeOut-input");
+
+const colorChangeButton = document.getElementById("color-change-button");
+const colorChangeInput = document.getElementById("color-change-input");
+const colorChangeSelect = document.getElementById("color-change-select");
 
 const textContentButton = document.getElementById("text-content-button");
 const textContentInput = document.getElementById("text-content-input");
@@ -167,11 +175,6 @@ require(["vs/editor/editor.main"], () => {
   };
 
   allReflect();
-  // const head = iframeElem.contentDocument.querySelector("head");
-  // const style = iframeElem.contentDocument.createElement("style");
-  // style.innerHTML = "h1 {text-align: center;}";
-  // head.appendChild(style);
-  // console.log(iframeElem.contentDocument.querySelector("head"));
 
   htmlEditor.onDidChangeModelContent(() => {
     allReflect();
@@ -185,37 +188,32 @@ require(["vs/editor/editor.main"], () => {
     allReflect();
   });
 
-  const insertInHtmlAtCursor = (text) => {
-    htmlEditor.executeEdits("", [
-      {
-        forceMoveMarkers: true,
-        range: htmlEditor.getSelection(),
-        text: text,
-      },
-    ]);
-  };
+  // const insertInHtmlAtCursor = (text) => {
+  //   htmlEditor.executeEdits("", [
+  //     {
+  //       forceMoveMarkers: true,
+  //       range: htmlEditor.getSelection(),
+  //       text: text,
+  //     },
+  //   ]);
+  // };
 
   const insertInHtmlAtBodyBottom = (text) => {
     const body = htmlEditor.getModel().findMatches("</body>")[0].range;
-
+    console.log(body);
     htmlEditor.executeEdits("", [
       {
         forceMoveMarkers: true,
         range: new monaco.Range(
           body.startLineNumber,
           body.startColumnNumber,
-          body.endLineNumber,
+          body.startLineNumber,
           body.startColumnNumber
         ),
         text: text,
       },
     ]);
   };
-
-  // 末尾に挿入するやつも必要
-  // console.log(cssEditor.getTopForLineNumber());
-  // console.log(cssEditor.getBottomForLineNumber());
-  // console.log(cssEditor.getBottomForLineNumber());
 
   const insertInCssAtBottom = (text) => {
     const bottom = cssEditor.getModel().getLineCount();
@@ -239,7 +237,6 @@ require(["vs/editor/editor.main"], () => {
   };
 
   const insertInJsAtTop = (text) => {
-    // const bottom = jsEditor.getModel().getLineCount();
     jsEditor.executeEdits("", [
       {
         forceMoveMarkers: true,
@@ -270,24 +267,38 @@ require(["vs/editor/editor.main"], () => {
     ]);
   };
 
-  // 構造（HTML）
+  // 「構造」（主にHTML）
+  // HTMLエディタへのタグの挿入・CSSエディタへのIDセレクタの挿入・JSエディタでのDOM取得の挿入
+
   h1Button.onclick = () => {
-    insertInHtmlAtBodyBottom(`\t\t<h1>見出し</h1>\n`);
+    insertInHtmlAtBodyBottom(`\t\t<h1 id="${h1Input.value}">見出し</h1>\n`);
+    insertInCssAtBottom(
+      `#${h1Input.value} {\n\t/* この中で「${h1Input.value}」の見た目を調整 */\n}\n`
+    );
+    insertInJsAtTop(
+      `const ${h1Input.value} = document.getElementById("${h1Input.value}"); // 「${h1Input.value}」の動きを操作するための準備\n`
+    );
   };
 
   paraButton.onclick = () => {
-    insertInHtmlAtBodyBottom(`\t\t<p>段落</p>\n`);
+    insertInHtmlAtBodyBottom(`\t\t<p id="${paraInput.value}">段落</p>\n`);
+    insertInCssAtBottom(
+      `#${paraInput.value} {\n\t/* この中で「${paraInput.value}」の見た目を調整 */\n}\n`
+    );
+    insertInJsAtTop(
+      `const ${paraInput.value} = document.getElementById("${paraInput.value}"); // 「${paraInput.value}」の動きを操作するための準備\n`
+    );
   };
 
   ulButton.onclick = () => {
     insertInHtmlAtBodyBottom(
-      `    <ul id=\"\">\r\n        <li><\/li>\r\n    <\/ul>\r\n`
+      `    <ul id=\"${ulInput.value}">\r\n        <li><\/li>\r\n    <\/ul>\r\n`
     );
     insertInCssAtBottom(
       `#${ulInput.value} {\n\t/* この中で「${ulInput.value}」の見た目を調整 */\n}\n`
     );
     insertInJsAtTop(
-      `const ${ulInput.value} = document.getElementById("${ulInput.value}");\n`
+      `const ${ulInput.value} = document.getElementById("${ulInput.value}"); // 「${ulInput.value}」の動きを操作するための準備\n`
     );
   };
 
@@ -299,7 +310,7 @@ require(["vs/editor/editor.main"], () => {
       `#${divInput.value} {\n\t/* この中で「${divInput.value}」の見た目を調整 */\n}\n`
     );
     insertInJsAtTop(
-      `const ${divInput.value} = document.getElementById("${divInput.value}");\n`
+      `const ${divInput.value} = document.getElementById("${divInput.value}"); // 「${divInput.value}」の動きを操作するための準備\n`
     );
   };
 
@@ -311,7 +322,7 @@ require(["vs/editor/editor.main"], () => {
       `#${buttonInput.value} {\n\t/* この中で「${buttonInput.value}」の見た目を調整 */\n}\n`
     );
     insertInJsAtBottom(
-      `const ${buttonInput.value} = document.getElementById("${buttonInput.value}");\n`
+      `const ${buttonInput.value} = document.getElementById("${buttonInput.value}"); // 「${buttonInput.value}」の動きを操作するための準備\n`
     );
   };
 
@@ -323,10 +334,12 @@ require(["vs/editor/editor.main"], () => {
       `#${inputInput.value} {\n\t/* この中で「${inputInput.value}」の見た目を調整 */\n}\n`
     );
     insertInJsAtBottom(
-      `const ${inputInput.value} = document.getElementById("${inputInput.value}");\n`
+      `const ${inputInput.value} = document.getElementById("${inputInput.value}"); // 「${inputInput.value}」の動きを操作するための準備\n`
     );
   };
 
+  // 「見た目」（主にCSS）
+  // CSSエディタでのプロパティの操作。カーソル位置に挿入。
   whButton.onclick = () => {
     insertInCssAtCursor(
       `width: ${widthInput.value}px; /* 横の長さ */\n\theight: ${heightInput.value}px; /* 縦の長さ */\n\t`
@@ -339,31 +352,37 @@ require(["vs/editor/editor.main"], () => {
     );
   };
 
+  fsLargeButton.onclick = () => {
+    insertInCssAtCursor(`font-size: xx-large; /* 文字を大きくする */\n\t`);
+  };
+
+  fwBoldButton.onclick = () => {
+    insertInCssAtCursor(`font-weight: bold; /* 文字を太くする */\n\t`);
+  };
+
   textAlignButton.onclick = () => {
     insertInCssAtCursor(`text-align: center; /* 文字等を中央揃え */\n\t`);
   };
 
+  // 動き（主にJS）
+  // DOM取得はここではしない。
+
   randomButton.onclick = () => {
     insertInJsAtCursor(
-      `const r = Math.random();\r\n\tif (r < 0.3) {\r\n\t\t\/\/ r\u304c0.3\u3088\u308a\u5c0f\u3055\u3044\u3068\u304d\u306e\u52d5\u4f5c\r\n\t\t\r\n\t} else if (r < 0.7) {\r\n\t\t\/\/ r\u304c0.3\u4ee5\u4e0a\u3067\u30010.7\u3088\u308a\u5c0f\u3055\u3044\u3068\u304d\u306e\u52d5\u4f5c\r\n\t\t\r\n\t} else {\r\n\t\t\/\/ \u305d\u306e\u4ed6\uff08r\u304c0.7\u4ee5\u4e0a\uff09\u306e\u3068\u304d\u306e\u52d5\u4f5c\r\n\t\t\r\n\t}\r\n\t`
+      `const r = Math.random(); // 0以上1未満の乱数（ランダムな数）\r\n\tif (r < 0.3) {\r\n\t\t\/\/ r\u304c0.3\u3088\u308a\u5c0f\u3055\u3044\u3068\u304d\u306e\u52d5\u4f5c\r\n\t\t\r\n\t} else if (r < 0.7) {\r\n\t\t\/\/ r\u304c0.3\u4ee5\u4e0a\u3067\u30010.7\u3088\u308a\u5c0f\u3055\u3044\u3068\u304d\u306e\u52d5\u4f5c\r\n\t\t\r\n\t} else {\r\n\t\t\/\/ \u305d\u306e\u4ed6\uff08r\u304c0.7\u4ee5\u4e0a\uff09\u306e\u3068\u304d\u306e\u52d5\u4f5c\r\n\t\t\r\n\t}\r\n\t`
     );
   };
 
   onclickButton.onclick = () => {
-    insertInJsAtTop(
-      `const ${onclickInput.value} = document.getElementById("${onclickInput.value}");\n`
-    );
     insertInJsAtCursor(
       `${onclickInput.value}.onclick = () => {\n\t// 「${onclickInput.value}」がクリックされたときの動作\n\t\n}\n`
     );
   };
 
   rightClickButton.onclick = () => {
-    insertInJsAtTop(
-      `const ${rightClickInput.value} = document.getElementById("${rightClickInput.value}");\n`
-    );
     insertInJsAtCursor(
-      `${rightClickInput.value}.addEventListener(\"contextmenu\", (e) => {\r\n    \/\/ \u53f3\u30af\u30ea\u30c3\u30af\u3055\u308c\u305f\u3068\u304d\r\n    \/\/ \u53f3\u30af\u30ea\u30c3\u30af\u306e\u30e1\u30cb\u30e5\u30fc\u3092\u8868\u793a\u3057\u306a\u3044\r\n    e.preventDefault();\r\n    \/\/ \u884c\u3046\u51e6\u7406\r\n    \r\n  });\n`
+      `${rightClickInput.value}.addEventListener("contextmenu", (e) => {\n\te.preventDefault(); // 右クリックすると通常出るメニューを表示しない\n\t// 「」が右クリックされたときの動作\n\t\n});\n`
+      // `${rightClickInput.value}.addEventListener(\"contextmenu\", (e) => {\r\n    \/\/ \u53f3\u30af\u30ea\u30c3\u30af\u3055\u308c\u305f\u3068\u304d\r\n    \/\/ \u53f3\u30af\u30ea\u30c3\u30af\u306e\u30e1\u30cb\u30e5\u30fc\u3092\u8868\u793a\u3057\u306a\u3044\r\n    e.preventDefault();\r\n    \/\/ \u884c\u3046\u51e6\u7406\r\n    \r\n  });\n`
     );
   };
 
@@ -375,20 +394,31 @@ require(["vs/editor/editor.main"], () => {
     );
   };
 
+  colorChangeButton.onclick = () => {
+    insertInJsAtCursor(
+      `${colorChangeInput.value}.style.backgroundColor = "${colorChangeSelect.value}"; // 「${colorChangeInput.value}」の背景色を変更する\r\n\t`
+    );
+  };
+
   textContentButton.onclick = () => {
     insertInJsAtCursor(
-      `${textContentInput.value}.textContent = "この文字に変わります";\r\n\t\t\t`
+      `${textContentInput.value}.textContent = "この文字に変わります"; // 「${textContentInput.value}」の文字を変更する\r\n\t`
     );
   };
 
   hideButton.onclick = () => {
-    insertInJsAtCursor(`${hideInput.value}.style.display = "none";\r\n\t\t\t`);
+    insertInJsAtCursor(
+      `${hideInput.value}.style.display = "none"; // 「${hideInput.value}」を隠す\r\n\t`
+    );
   };
 
   showButton.onclick = () => {
-    insertInJsAtCursor(`${showInput.value}.style.display = "block";\r\n\t\t\t`);
+    insertInJsAtCursor(
+      `${showInput.value}.style.display = "block"; // 「${showInput.value}」を表示する\r\n\t`
+    );
   };
 
+  // テンプレート
   omikujiButton.onclick = () => {
     insertInHtmlAtBodyBottom([sampleCode.omikujiDiv].join("\n"));
     insertInCssAtBottom([sampleCode.omikujiCss].join("\n"));
@@ -421,6 +451,10 @@ require(["vs/editor/editor.main"], () => {
       localStorage.removeItem("css");
       localStorage.removeItem("js");
     }
+  };
+
+  window.onload = () => {
+    helpButton.click();
   };
 
   window.onbeforeunload = (e) => {

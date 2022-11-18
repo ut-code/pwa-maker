@@ -6,6 +6,10 @@ input {
   width: 100px;
 }
 
+video {
+  margin: 20px 0;
+}
+
 .hidden {
   display: none;
 }
@@ -21,6 +25,10 @@ input {
   #wrapper {
     flex-flow: column;
   }
+}
+
+#help-button-wrapper {
+  margin: 5px;
 }
 
 #iframe-elem {

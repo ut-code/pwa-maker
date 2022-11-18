@@ -1,7 +1,7 @@
 {
-    "name"              : "PWA-TEST-APP",
-    "short_name"        : "PWA-TEST",
-    "description"       : "PWAのテスト",
+    "name"              : "My App",
+    "short_name"        : "My App",
+    "description"       : "オリジナルアプリ",
     "start_url"         : "./index.html",
     "display"           : "standalone",
     "background_color"  : "#00D372",

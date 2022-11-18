@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -16,6 +17,113 @@
     <div id="wrapper">
       <div id="gui-wrapper">
         <h2 class="title">オリジナルアプリを作ろう！</h2>
+        <div id="gui-menu" class="navbar navbar-light">
+          <div id="help-button-wrapper">
+            <button type="button" class="btn btn-primary rounded-circle p-0" data-bs-toggle="modal" data-bs-target="#exampleModal" id="help-button" style="width:2rem;height:2rem;">？</button>
+          </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">PWA-Makerの操作方法</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h5>これから作るアプリについて</h5>
+        <ul>
+          <li>あなたのスマホで使えるアプリを作りましょう。</li>
+          <li>App Store や Google Play などで提供されている多くのアプリとは異なり、今回作るものは実際のところは「ウェブサイト」です。</li>
+          <li>といっても、見た目は普通のアプリとあまり変わりません。</li>
+          <li>さらに知りたい方は「PWA（プログレッシブウェブアプリ）」と調べてみると良いでしょう！</li>
+        </ul>
+        <h5>画面構成</h5>
+        <ul>
+          <li>左側、真ん中、右側の3つの部分に分かれています。</li>
+          <li>右から左の順に見ていきましょう。</li>
+        </ul>
+        <h5>右側（プレビュー）</h5>
+        <img src="/image/03.jpg" class="img-fluid" alt="右側（プレビュー）">
+        <ul>
+          <li>アプリの完成形が確認できます。</li>
+          <li>スマホの形になっています。</li>
+        </ul>
+        <h5>真ん中（エディタ）</h5>
+        <img src="/image/02.jpg" class="img-fluid" alt="右側（プレビュー）">
+        <ul>
+          <li>プログラムを書く場所です。</li>
+          <li>ここにプログラムを書くと、リアルタイムで右側のプレビューに反映されます。</li>
+          <li>よく見ると、縦に3つに分かれています。これらはそれぞれ役割の異なる言語で、上から順に
+            <ul>
+              <li>HTML（構造を表す役割）</li>
+              <li>CSS（見た目を変える役割）</li>
+              <li>JavaScript（動きを与える役割</li>
+            </ul>
+            <li>というものです。</li>
+          </li>
+        </ul>
+        <h5>左（マウス操作）</h5>
+        <img src="/image/01.jpg" class="img-fluid" alt="右側（プレビュー）">
+        <ul>
+          <li>マウス操作で作業を進めることができます。</li>
+          <li>ここで行った変更は、真ん中のエディタに反映され、右側のプレビューにも反映されます。</li>
+          <li>先ほどの「真ん中（エディタ）」の項で出てきた3つの言語と対応するように、ここには
+            <ul>
+              <li>構造</li>
+              <li>見た目</li>
+              <li>動き</li>
+            </ul>
+            <li>の各項目があります。</li>
+          </li>
+        </ul>
+        <h5>使ってみよう</h5>
+        <p>例として、ボタンを押すと表示されている文章が変わるプログラムを作ってみましょう。</p>
+        <h5>構造の操作</h5>
+        <p>最初に、「構造」を操作してみましょう。</p>
+        <video controls playsinline muted autoplay src="video/01.mp4" class="img-fluid"></video>
+        <ul>
+          <li>
+                「構造」の部分から、"hello" という名前の箱を作ります。
+              </li>
+              <li>「箱」の「つける名前」の欄に hello と入力して「追加」を押せば作ることができます。
+              </li>
+              <li>
+                エディタで、中の文章を「ノックするとあいさつします！」に書き換えます。
+              </li>
+            </ul>
+          <h5>見た目の操作</h5>
+          <p>次に、「見た目」を操作してみましょう。</p>
+          <video controls playsinline muted autoplay src="video/02.mp4" class="img-fluid"></video>
+          <ul>
+            <li>先ほど "hello" の箱を作った際に、CSS のエディタに <code>#hello {/* この中で「hello」の見た目を調整 */}</code> という記述が出現していました。</li>
+            <li>その <code>{}</code> の中にカーソルを置いてから、「見た目」の「背景の色」で色を設定してみましょう。</li>
+          </ul>
+          <h5>動きの操作</h5>
+          <p>最後に、「動き」を操作してみましょう。</p>
+          <video controls playsinline muted autoplay src="video/03.mp4" class="img-fluid"></video>
+          <ul>
+              <li>
+                まず「構造」からボタンを作っておきます。名前は "knock" などとしておきましょう。ボタンの中の文章は「ノックする」などとしておきましょう。</li>
+              <li>次に、ボタンがクリックされたときの操作を設定していきます。「動き」の「クリック時の動作」に、今作った "knock" の名前を入れて追加します。</li>
+              <li>そして、JavaScript のエディタに出現した <code>knock.onclick = () => { // 「knock」がクリックされたときの動作 }</code> の <code>{}</code> の中にカーソルを置き、「動き」の「文字を変える」に、最初に作った "hello" を入力して追加します。</li>
+              <li>最後に、JavaScript のエディタに追加された「この文字に変わります」の部分を「こんにちは！」などに書き換えましょう。</li>
+              <li>プレビューの中の「ノックする」ボタンを押すと・・・文字が変わりましたか？</li>
+          </ul>
+        <p>左側の一番下には「テンプレート」があります。これらをベースにして、自分だけのアプリを作りましょう！</p>
+        <h5>その他</h5>
+        <ul>
+          <li>「保存」ボタンまたは Ctrl + S (mac の場合、Command + S) で作業内容をブラウザに保存できます。</li>
+          <li>「削除」ボタンで、保存したデータをブラウザから削除できます。</li>
+          <!-- <li>下の「アプリをダウンロード」のボタンで、作ったアプリのファイルをダウンロードできます。</li> -->
+          <li>スマホで使えるようにするための作業はスタッフが行うので、「これで完成！」と思ったらスタッフに声をかけてください。</li>  
+          <li>この解説は左上の「？」ボタンを押せば見ることができます。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+        </div>
         <div class="accordion" id="accordionExample">
           <div class="accordion-item">
             <h2 class="accordion-header" id="headingOne">
@@ -23,51 +131,49 @@
                 構造
               </button>
             </h2>
-            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
               <div class="accordion-body">
                 <table class="table">
                   <tr>
                     <td>箱</td>
                     <td>
-                      <input id="div-input" type="text" placeholder="名前" />
+                      <input id="div-input" type="text" placeholder="つける名前" />
                     </td>
                     <td><button class="btn btn-outline-secondary btn-sm" id="div-button">追加</button></td>
                   </tr>
                   <tr>
                     <td>ボタン</td>
                     <td>
-                      <input id="button-input" type="text" placeholder="名前" />
+                      <input id="button-input" type="text" placeholder="つける名前" />
                     </td>
                     <td><button class="btn btn-outline-secondary btn-sm" id="button-button">追加</button></td>
                   </tr>
                   <tr>
                     <td>入力欄</td>
                     <td>
-                      <input id="input-input" type="text" placeholder="名前" />
+                      <input id="input-input" type="text" placeholder="つける名前" />
                     </td>
                     <td><button class="btn btn-outline-secondary btn-sm" id="input-button">追加</button></td>
                   </tr>
                   <tr>
                     <td>リスト</td>
                     <td>
-                      <input id="ul-input" type="text" placeholder="名前" />
+                      <input id="ul-input" type="text" placeholder="つける名前" />
                     </td>
                     <td><button class="btn btn-outline-secondary btn-sm" id="ul-button">追加</button></td>
                   </tr>
                   <tr>
-                    <td>見出し(大)</td>
-                    <td></td>
-                    <!-- <td>
-                      <input type="text" id="h1-input" placeholder="見出し(大)の内容" />
-                    </td> -->
+                    <td>見出し</td>
+                    <td>
+                      <input type="text" id="h1-input" placeholder="つける名前" />
+                    </td>
                     <td><button class="btn btn-outline-secondary btn-sm" id="h1-button">追加</button></td>
                   </tr>
                   <tr>
                     <td>段落</td>
-                    <td></td>
-                    <!-- <td>
-                      <input type="text" id="para-input" placeholder="段落の内容" />
-                    </td> -->
+                    <td>
+                      <input type="text" id="para-input" placeholder="つける名前" />
+                    </td>
                     <td><button class="btn btn-outline-secondary btn-sm" id="para-button">追加</button></td>
                   </tr>
                 </table>
@@ -80,7 +186,7 @@
                 見た目
               </button>
             </h2>
-            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo">
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
               <div class="accordion-body">
                 <table class="table">
                   <tr>
@@ -107,6 +213,16 @@
                     <td><button class="btn btn-outline-secondary btn-sm" id="color-button">追加</button></td>
                   </tr>
                   <tr>
+                    <td>文字を大きくする</td>
+                    <td></td>
+                    <td><button class="btn btn-outline-secondary btn-sm" id="fs-large-button">追加</button></td>
+                  </tr>
+                  <tr>
+                    <td>文字を太くする</td>
+                    <td></td>
+                    <td><button class="btn btn-outline-secondary btn-sm" id="fw-bold-button">追加</button></td>
+                  </tr>
+                  <tr>
                     <td>文字を中央揃え</td>
                     <td></td>
                     <td><button class="btn btn-outline-secondary btn-sm" id="text-align-button">追加</button></td>
@@ -121,9 +237,66 @@
                 動き
               </button>
             </h2>
-            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree">
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
               <div class="accordion-body">
                 <table class="table">
+
+                  <tr>
+                    <td>クリック時の動作</td>
+                    <td>
+                      <input type="text" id="onclick-input" placeholder="呼ぶ名前" />
+                    </td>
+                    <td><button class="btn btn-outline-secondary btn-sm" id="onclick-button">追加</button></td>
+                  </tr>
+                  <tr>
+                    <td>右クリック時の動作</td>
+                    <td>
+                      <input type="text" id="right-click-input" placeholder="呼ぶ名前" />
+                    </td>
+                    <td><button class="btn btn-outline-secondary btn-sm" id="right-click-button">追加</button></td>
+                  </tr>
+                  <tr>
+                    <td>背景の色を変える</td>
+                    <td>
+                      <input type="text" id="color-change-input" placeholder="呼ぶ名前" />
+                    </td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>
+                      <select id="color-change-select">
+                        <option value="transparent">透明</option>
+                        <option value="gray">グレー</option>
+                        <option value="lightblue">青</option>
+                        <option value="lightpink">ピンク</option>
+                        <option value="lightgreen">緑</option>
+                        <!-- もっと追加 -->
+                      </select>
+                    </td>
+                    <td><button class="btn btn-outline-secondary btn-sm" id="color-change-button">追加</button></td>
+                  </tr>
+                  <tr>
+                    <td>文字を変える</td>
+                    <td>
+                      <input type="text" id="text-content-input" placeholder="呼ぶ名前" />
+                    </td>
+                    <td><button class="btn btn-outline-secondary btn-sm" id="text-content-button">追加</button></td>
+                  </tr>
+                  <tr>
+                    <td>隠す</td>
+                    <td>
+                      <input type="text" id="hide-input" placeholder="呼ぶ名前" />
+                    </td>
+                    <td><button class="btn btn-outline-secondary btn-sm" id="hide-button">追加</button></td>
+                  </tr>
+                  <tr>
+                    <td>表示する</td>
+                    <td>
+                      <input type="text" id="show-input" placeholder="呼ぶ名前" />
+                    </td>
+                    <td><button class="btn btn-outline-secondary btn-sm" id="show-button">追加</button></td>
+                  </tr>
                   <tr>
                     <td>ランダム</td>
                     <td></td>
@@ -131,57 +304,21 @@
                     <td><button class="btn btn-outline-secondary btn-sm" id="random-button">追加</button></td>
                   </tr>
                   <tr>
-                    <td>クリック時の動作</td>
-                    <td>
-                      <input type="text" id="onclick-input" placeholder="名前" />
-                    </td>
-                    <td><button class="btn btn-outline-secondary btn-sm" id="onclick-button">追加</button></td>
-                  </tr>
-                  <tr>
-                    <td>右クリック時の動作</td>
-                    <td>
-                      <input type="text" id="right-click-input" placeholder="名前" />
-                    </td>
-                    <td><button class="btn btn-outline-secondary btn-sm" id="right-click-button">追加</button></td>
-                  </tr>
-                  <tr>
                     <td>○秒待ってから実行</td>
                     <td><input type="text" id="setTimeOut-input" />秒</td>
                     <td><button class="btn btn-outline-secondary btn-sm" id="setTimeOut-button">追加</button></td>
-                  </tr>
-                  <tr>
-                    <td>文字を変える</td>
-                    <td>
-                      <input type="text" id="text-content-input" placeholder="名前" />
-                    </td>
-                    <td><button class="btn btn-outline-secondary btn-sm" id="text-content-button">追加</button></td>
-                  </tr>
-                  <tr>
-                    <td>隠す</td>
-                    <td>
-                      <input type="text" id="hide-input" placeholder="名前" />
-                    </td>
-                    <td><button class="btn btn-outline-secondary btn-sm" id="hide-button">追加</button></td>
-                  </tr>
-                  <tr>
-                    <td>再表示する</td>
-                    <td>
-                      <input type="text" id="show-input" placeholder="名前" />
-                    </td>
-                    <td><button class="btn btn-outline-secondary btn-sm" id="show-button">追加</button></td>
                   </tr>
                 </table>
               </div>
             </div>
           </div>
-
           <div class="accordion-item">
             <h2 class="accordion-header" id="headingFour">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                 テンプレート
               </button>
             </h2>
-            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour">
+            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
               <div class="accordion-body">
                 <table class="table">
                   <tr>
@@ -200,7 +337,6 @@
               </div>
             </div>
           </div>
-        
         </div>
       </div>
       <div id="editor-wrapper">

@@ -1,34 +1,53 @@
-h1 {
-  text-align: center;
+#omikuji_daimei {
+  /* この中で「omikuji_daimei」の見た目を調整 */
+  text-align: center; /* 文字等を中央揃え */
 }
-p {
-  text-align: center;
+#omikuji_shoukai {
+  /* この中で「omikuji_shoukai」の見た目を調整 */
+  text-align: center; /* 文字等を中央揃え */
 }
-#omikuji {
-  background-color: lightgray;
+#omikuji_start {
+  /* この中で「omikuji_start」の見た目を調整 */
+  margin: 10px auto; /* 上下に10px, 左右に自動の幅をとる */
+  width: 200px; /* 横の長さ */
+  height: 200px; /* 縦の長さ */
+  text-align: center; /* 文字等を中央揃え */
+  line-height: 200px; /* 行間を200pxに設定して上下中央揃え */
+  background-color: lightgray; /* 背景の色 */
 }
 #daikichi {
-  display: none;
-  background-color: lightpink;
+  /* この中で「daikichi」の見た目を調整 */
+  margin: 10px auto; /* 上下に10px, 左右に自動の幅をとる */
+  width: 200px; /* 横の長さ */
+  height: 200px; /* 縦の長さ */
+  text-align: center; /* 文字等を中央揃え */
+  line-height: 200px; /* 行間を200pxに設定して上下中央揃え */
+  font-weight: bold; /* 文字を太字にする */
+  font-size: xx-large; /* 文字を大きくする */
+  background-color: lightpink; /* 背景の色 */
 }
 #kichi {
-  display: none;
-  background-color: lightgreen;
+  /* この中で「kichi」の見た目を調整 */
+  margin: 10px auto; /* 上下に10px, 左右に自動の幅をとる */
+  width: 200px; /* 横の長さ */
+  height: 200px; /* 縦の長さ */
+  text-align: center; /* 文字等を中央揃え */
+  line-height: 200px; /* 行間を200pxに設定して上下中央揃え */
+  font-weight: bold; /* 文字を太字にする */
+  font-size: xx-large; /* 文字を大きくする */
+  background-color: lightgreen; /* 背景の色 */
 }
 #kyou {
-  display: none;
-  background-color: lightblue;
+  /* この中で「kyou」の見た目を調整 */
+  margin: 10px auto; /* 上下に10px, 左右に自動の幅をとる */
+  width: 200px; /* 横の長さ */
+  height: 200px; /* 縦の長さ */
+  text-align: center; /* 文字等を中央揃え */
+  line-height: 200px; /* 行間を200pxに設定して上下中央揃え */
+  font-weight: bold; /* 文字を太字にする */
+  font-size: xx-large; /* 文字を大きくする */
+  background-color: lightblue; /* 背景の色 */
 }
-.omikuji-elements {
-  margin: 10px auto;
-  width: 200px;
-  height: 200px;
-  text-align: center;
-  line-height: 200px;
-  font-size: 36px;
-  font-weight: bold;
-}
-
-#button-box {
-  text-align: center;
+#button_box {
+  text-align: center; /* 文字等を中央揃え */
 }
