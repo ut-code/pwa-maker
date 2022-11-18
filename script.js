@@ -125,7 +125,7 @@ require(["vs/editor/editor.main"], () => {
 
     htmlText =
       headBeforeText +
-      `<link rel="manifest" href="../manifest.json" />\n` +
+      `<link rel="manifest" href="./manifest.json" />\n` +
       `<style>${cssValue}</style>\n` +
       headAfterText;
 
