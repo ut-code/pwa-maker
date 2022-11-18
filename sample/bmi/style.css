@@ -1,0 +1,16 @@
+h1 {
+  text-align: center;
+}
+
+p {
+  text-align: center;
+}
+
+#box {
+  /* この中で「box」の見た目を調整 */
+  text-align: center; /* 文字等を中央揃え */
+}
+#answer {
+  /* この中で「answer」の見た目を調整 */
+  text-align: center; /* 文字等を中央揃え */
+}
