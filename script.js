@@ -2,6 +2,8 @@ import sampleCode from "./sample-code.js";
 
 require.config({ paths: { vs: "./node_modules/monaco-editor/min/vs" } });
 
+const helpButton = document.getElementById("help-button");
+
 const h1Button = document.getElementById("h1-button");
 const h1Input = document.getElementById("h1-input");
 
@@ -449,6 +451,10 @@ require(["vs/editor/editor.main"], () => {
       localStorage.removeItem("css");
       localStorage.removeItem("js");
     }
+  };
+
+  window.onload = () => {
+    helpButton.click();
   };
 
   window.onbeforeunload = (e) => {
