@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BMI計算アプリ</title>
+    <link rel="manifest" href="./manifest.json" />
+    <style>
+      h1 {
+        text-align: center;
+      }
+
+      p {
+        text-align: center;
+      }
+
+      #box {
+        /* この中で「box」の見た目を調整 */
+        text-align: center; /* 文字等を中央揃え */
+      }
+      #answer {
+        /* この中で「answer」の見た目を調整 */
+        text-align: center; /* 文字等を中央揃え */
+      }
+    </style>
+  </head>
+  <body>
+    <h1>BMI計算アプリ</h1>
+    <p>「BMI=体重(kg)÷身長(m)^2」</p>
+
+    <p><input id="height" type="text" /> cm</p>
+    <p><input id="weight" type="text" /> kg</p>
+    <div id="box">
+      <button id="button">計算する！</button>
+    </div>
+    <p>BMIは……</p>
+    <div id="answer">？？</div>
+    <script>
+      const answer = document.getElementById("answer");
+      const height = document.getElementById("height");
+      const weight = document.getElementById("weight");
+
+      const button = document.getElementById("button");
+
+      button.onclick = () => {
+        // 「button」がクリックされたときの動作
+        answer.textContent = (weight.value / (height.value / 100)) * 2;
+      };
+    </script>
+  </body>
+</html>
