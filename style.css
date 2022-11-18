@@ -23,6 +23,10 @@ input {
   }
 }
 
+#help-button-wrapper {
+  margin: 5px;
+}
+
 #iframe-elem {
   width: calc(0.46 * 85vh);
   height: 85vh;

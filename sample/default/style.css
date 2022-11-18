@@ -1,7 +1,8 @@
-h1 {
-  text-align: center;
+#app_daimei {
+  /* この中で「app_daimei」の見た目を調整 */
+  text-align: center; /* 文字等を中央揃え */
 }
-
-p {
-  text-align: center;
+#app_shoukai {
+  /* この中で「app_shoukai」の見た目を調整 */
+  text-align: center; /* 文字等を中央揃え */
 }
