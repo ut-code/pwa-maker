@@ -1,0 +1,10 @@
+ul {
+  margin: auto;
+  width: 150px;
+}
+#wrapper {
+  text-align: center;
+}
+.line {
+  text-decoration: line-through;
+}
