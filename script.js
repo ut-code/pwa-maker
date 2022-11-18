@@ -44,6 +44,7 @@ const showInput = document.getElementById("show-input");
 
 const omikujiButton = document.getElementById("omikuji-button");
 const bmiButton = document.getElementById("bmi-button");
+const todoButton = document.getElementById("todo-button");
 
 const iframeElem = document.getElementById("iframe-elem");
 
@@ -371,6 +372,12 @@ require(["vs/editor/editor.main"], () => {
     insertInHtmlAtBodyBottom([sampleCode.bmiDiv].join("\n"));
     insertInCssAtBottom([sampleCode.bmiCss].join("\n"));
     insertInJsAtBottom([sampleCode.bmiJs].join("\n"));
+  };
+
+  todoButton.onclick = () => {
+    insertInHtmlAtBodyBottom([sampleCode.todoDiv].join("\n"));
+    insertInCssAtBottom([sampleCode.todoCss].join("\n"));
+    insertInJsAtBottom([sampleCode.todoJs].join("\n"));
   };
 
   // localStorageに保存
