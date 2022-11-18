@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -18,8 +19,111 @@
         <h2 class="title">オリジナルアプリを作ろう！</h2>
         <div id="gui-menu" class="navbar navbar-light">
           <div id="help-button-wrapper">
-            <button class="btn btn-primary rounded-circle p-0" id="help-button" style="width:2rem;height:2rem;">？</button>
+            <button type="button" class="btn btn-primary rounded-circle p-0" data-bs-toggle="modal" data-bs-target="#exampleModal" id="help-button" style="width:2rem;height:2rem;">？</button>
           </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">PWA-Makerの操作方法</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h5>これから作るアプリについて</h5>
+        <ul>
+          <li>あなたのスマホで使えるアプリを作りましょう。</li>
+          <li>App Store や Google Play などで提供されている多くのアプリとは異なり、今回作るものは実際のところは「ウェブサイト」です。</li>
+          <li>といっても、見た目は普通のアプリとあまり変わりません。</li>
+          <li>さらに知りたい方は「PWA（プログレッシブウェブアプリ）」と調べてみると良いでしょう！</li>
+        </ul>
+        <h5>画面構成</h5>
+        <ul>
+          <li>左側、真ん中、右側の3つの部分に分かれています。</li>
+          <li>右から左の順に見ていきましょう。</li>
+        </ul>
+        <h5>右側（プレビュー）</h5>
+        <img src="/image/03.jpg" class="img-fluid" alt="右側（プレビュー）">
+        <ul>
+          <li>アプリの完成形が確認できます。</li>
+          <li>スマホの形になっています。</li>
+        </ul>
+        <h5>真ん中（エディタ）</h5>
+        <img src="/image/02.jpg" class="img-fluid" alt="右側（プレビュー）">
+        <ul>
+          <li>プログラムを書く場所です。</li>
+          <li>ここにプログラムを書くと、リアルタイムで右側のプレビューに反映されます。</li>
+          <li>よく見ると、縦に3つに分かれています。これらはそれぞれ役割の異なる言語で、上から順に
+            <ul>
+              <li>HTML（構造を表す役割）</li>
+              <li>CSS（見た目を変える役割）</li>
+              <li>JavaScript（動きを与える役割</li>
+            </ul>
+            <li>というものです。</li>
+          </li>
+        </ul>
+        <h5>左（マウス操作）</h5>
+        <img src="/image/01.jpg" class="img-fluid" alt="右側（プレビュー）">
+        <ul>
+          <li>マウス操作で作業を進めることができます。</li>
+          <li>ここで行った変更は、真ん中のエディタに反映され、右側のプレビューにも反映されます。</li>
+          <li>先ほどの「真ん中（エディタ）」の項で出てきた3つの言語と対応するように、ここには
+            <ul>
+              <li>構造</li>
+              <li>見た目</li>
+              <li>動き</li>
+            </ul>
+            <li>の各項目があります。</li>
+          </li>
+        </ul>
+        <h5>使ってみよう</h5>
+        <p>例として、ボタンを押すと表示されている文章が変わるプログラムを作ってみましょう。</p>
+        <ul>
+          <li>最初に、「構造」を操作してみましょう。
+            <ul>
+              <li>
+                「構造」の部分から、"hello" という名前の箱を作ります。
+              </li>
+              <li>「箱」の「つける名前」の欄に hello と入力して「追加」を押せば作ることができます。
+              </li>
+              <li>
+                エディタで、中の文章を「ノックするとあいさつします！」に書き換えます。
+              </li>
+            </ul></li>
+            <video controls playsinline muted autoplay src="video/01.mp4" class="img-fluid"></video>
+          <li>次に、「見た目」を操作してみましょう。
+            <ul>
+                <li>先ほど "hello" の箱を作った際に、CSS のエディタに <code>#hello {/* この中で「hello」の見た目を調整 */}</code> という記述が出現していました。</li>
+                <li>その <code>{}</code> の中にカーソルを置いてから、「見た目」の「背景の色」で色を設定してみましょう。</li>
+            </ul></li>
+          <video controls playsinline muted autoplay src="video/02.mp4" class="img-fluid"></video>
+          <li>最後に、「動き」を操作してみましょう。
+            <ul>
+              <li>
+                まず「構造」からボタンを作っておきます。名前は "knock" などとしておきましょう。ボタンの中の文章は「ノックする」などとしておきましょう。</li>
+              <li>次に、ボタンがクリックされたときの操作を設定していきます。「動き」の「クリック時の動作」に、今作った "knock" の名前を入れて追加します。</li>
+              <li>そして、JavaScript のエディタに出現した <code>knock.onclick = () => { // 「knock」がクリックされたときの動作 }</code> の <code>{}</code> の中にカーソルを置き、「動き」の「文字を変える」に、最初に作った "hello" を入力して追加します。</li>
+              <li>最後に、JavaScript のエディタに追加された「この文字に変わります」の部分を「こんにちは！」などに書き換えましょう。</li>
+              <li>プレビューの中の「ノックする」ボタンを押すと・・・文字が変わりましたか？</li>
+              </ul>
+          </li>
+          <video controls playsinline muted autoplay src="video/03.mp4" class="img-fluid"></video>
+        </ul>
+        <h5>その他</h5>
+        <ul>
+          <li>「保存」ボタンまたは Ctrl + S (mac の場合、Command + S) で作業内容を保存できます。</li>
+          <li>下の「アプリをダウンロード」のボタンで、作ったアプリのファイルをダウンロードできます。</li>
+          <li>スマホで使えるようにするための作業はスタッフが行うので、「これで完成！」と思ったらスタッフに声をかけてください。</li>  
+        </ul>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div> -->
+    </div>
+  </div>
+</div>
         </div>
         <div class="accordion" id="accordionExample">
           <div class="accordion-item">

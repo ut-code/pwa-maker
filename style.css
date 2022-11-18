@@ -6,6 +6,10 @@ input {
   width: 100px;
 }
 
+video {
+  margin: 20px 0;
+}
+
 .hidden {
   display: none;
 }
