@@ -8,6 +8,9 @@ const h1Button = document.getElementById("h1-button");
 const paraButton = document.getElementById("para-button");
 // const paraInput = document.getElementById("para-input");
 
+const ulButton = document.getElementById("ul-button");
+const ulInput = document.getElementById("ul-input");
+
 const divButton = document.getElementById("div-button");
 const divInput = document.getElementById("div-input");
 
@@ -271,6 +274,18 @@ require(["vs/editor/editor.main"], () => {
 
   paraButton.onclick = () => {
     insertInHtmlAtBodyBottom(`\t\t<p>段落</p>\n`);
+  };
+
+  ulButton.onclick = () => {
+    insertInHtmlAtBodyBottom(
+      `    <ul id=\"\">\r\n        <li><\/li>\r\n    <\/ul>\r\n`
+    );
+    insertInCssAtBottom(
+      `#${ulInput.value} {\n\t/* この中で「${ulInput.value}」の見た目を調整 */\n}\n`
+    );
+    insertInJsAtTop(
+      `const ${ulInput.value} = document.getElementById("${ulInput.value}");\n`
+    );
   };
 
   divButton.onclick = () => {
