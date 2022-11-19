@@ -321,7 +321,7 @@ require(["vs/editor/editor.main"], () => {
     insertInCssAtBottom(
       `#${buttonInput.value} {\n\t/* この中で「${buttonInput.value}」の見た目を調整 */\n}\n`
     );
-    insertInJsAtBottom(
+    insertInJsAtTop(
       `const ${buttonInput.value} = document.getElementById("${buttonInput.value}"); // 「${buttonInput.value}」の動きを操作するための準備\n`
     );
   };
@@ -333,7 +333,7 @@ require(["vs/editor/editor.main"], () => {
     insertInCssAtBottom(
       `#${inputInput.value} {\n\t/* この中で「${inputInput.value}」の見た目を調整 */\n}\n`
     );
-    insertInJsAtBottom(
+    insertInJsAtTop(
       `const ${inputInput.value} = document.getElementById("${inputInput.value}"); // 「${inputInput.value}」の動きを操作するための準備\n`
     );
   };
