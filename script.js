@@ -36,8 +36,8 @@ const textAlignButton = document.getElementById("text-align-button");
 const onclickButton = document.getElementById("onclick-button");
 const onclickInput = document.getElementById("onclick-input");
 
-const rightClickButton = document.getElementById("right-click-button");
-const rightClickInput = document.getElementById("right-click-input");
+// const rightClickButton = document.getElementById("right-click-button");
+// const rightClickInput = document.getElementById("right-click-input");
 
 const randomButton = document.getElementById("random-button");
 const setTimeOutButton = document.getElementById("setTimeOut-button");
@@ -271,79 +271,107 @@ require(["vs/editor/editor.main"], () => {
   // HTMLエディタへのタグの挿入・CSSエディタへのIDセレクタの挿入・JSエディタでのDOM取得の挿入
 
   h1Button.onclick = () => {
-    insertInHtmlAtBodyBottom(`\t\t<h1 id="${h1Input.value}">見出し</h1>\n`);
-    insertInCssAtBottom(
-      `#${h1Input.value} {\n\t/* この中で「${h1Input.value}」の見た目を調整 */\n}\n`
-    );
-    insertInJsAtTop(
-      `const ${h1Input.value} = document.getElementById("${h1Input.value}"); // 「${h1Input.value}」の動きを操作するための準備\n`
-    );
+    if (h1Input.value != "") {
+      insertInHtmlAtBodyBottom(`\t\t<h1 id="${h1Input.value}">見出し</h1>\n`);
+      insertInCssAtBottom(
+        `#${h1Input.value} {\n\t/* この中で「${h1Input.value}」の見た目を調整 */\n}\n`
+      );
+      insertInJsAtTop(
+        `const ${h1Input.value} = document.getElementById("${h1Input.value}"); // 「${h1Input.value}」の動きを操作するための準備\n`
+      );
+    } else {
+      alert("名前を入力してください！");
+    }
   };
 
   paraButton.onclick = () => {
-    insertInHtmlAtBodyBottom(`\t\t<p id="${paraInput.value}">段落</p>\n`);
-    insertInCssAtBottom(
-      `#${paraInput.value} {\n\t/* この中で「${paraInput.value}」の見た目を調整 */\n}\n`
-    );
-    insertInJsAtTop(
-      `const ${paraInput.value} = document.getElementById("${paraInput.value}"); // 「${paraInput.value}」の動きを操作するための準備\n`
-    );
+    if (paraInput.value != "") {
+      insertInHtmlAtBodyBottom(`\t\t<p id="${paraInput.value}">段落</p>\n`);
+      insertInCssAtBottom(
+        `#${paraInput.value} {\n\t/* この中で「${paraInput.value}」の見た目を調整 */\n}\n`
+      );
+      insertInJsAtTop(
+        `const ${paraInput.value} = document.getElementById("${paraInput.value}"); // 「${paraInput.value}」の動きを操作するための準備\n`
+      );
+    } else {
+      alert("名前を入力してください！");
+    }
   };
 
   ulButton.onclick = () => {
-    insertInHtmlAtBodyBottom(
-      `    <ul id=\"${ulInput.value}">\r\n        <li><\/li>\r\n    <\/ul>\r\n`
-    );
-    insertInCssAtBottom(
-      `#${ulInput.value} {\n\t/* この中で「${ulInput.value}」の見た目を調整 */\n}\n`
-    );
-    insertInJsAtTop(
-      `const ${ulInput.value} = document.getElementById("${ulInput.value}"); // 「${ulInput.value}」の動きを操作するための準備\n`
-    );
+    if (ulInput.value != "") {
+      insertInHtmlAtBodyBottom(
+        `    <ul id=\"${ulInput.value}">\r\n        <li><\/li>\r\n    <\/ul>\r\n`
+      );
+      insertInCssAtBottom(
+        `#${ulInput.value} {\n\t/* この中で「${ulInput.value}」の見た目を調整 */\n}\n`
+      );
+      insertInJsAtTop(
+        `const ${ulInput.value} = document.getElementById("${ulInput.value}"); // 「${ulInput.value}」の動きを操作するための準備\n`
+      );
+    } else {
+      alert("名前を入力してください！");
+    }
   };
 
   divButton.onclick = () => {
-    insertInHtmlAtBodyBottom(
-      `\t\t<div id="${divInput.value}">テキスト</div>\n`
-    );
-    insertInCssAtBottom(
-      `#${divInput.value} {\n\t/* この中で「${divInput.value}」の見た目を調整 */\n}\n`
-    );
-    insertInJsAtTop(
-      `const ${divInput.value} = document.getElementById("${divInput.value}"); // 「${divInput.value}」の動きを操作するための準備\n`
-    );
+    if (divInput.value != "") {
+      insertInHtmlAtBodyBottom(
+        `\t\t<div id="${divInput.value}">テキスト</div>\n`
+      );
+      insertInCssAtBottom(
+        `#${divInput.value} {\n\t/* この中で「${divInput.value}」の見た目を調整 */\n}\n`
+      );
+      insertInJsAtTop(
+        `const ${divInput.value} = document.getElementById("${divInput.value}"); // 「${divInput.value}」の動きを操作するための準備\n`
+      );
+    } else {
+      alert("名前を入力してください！");
+    }
   };
 
   buttonButton.onclick = () => {
-    insertInHtmlAtBodyBottom(
-      `\t\t<button id="${buttonInput.value}">ボタン</button>\n`
-    );
-    insertInCssAtBottom(
-      `#${buttonInput.value} {\n\t/* この中で「${buttonInput.value}」の見た目を調整 */\n}\n`
-    );
-    insertInJsAtTop(
-      `const ${buttonInput.value} = document.getElementById("${buttonInput.value}"); // 「${buttonInput.value}」の動きを操作するための準備\n`
-    );
+    if (buttonInput.value != "") {
+      insertInHtmlAtBodyBottom(
+        `\t\t<button id="${buttonInput.value}">ボタン</button>\n`
+      );
+      insertInCssAtBottom(
+        `#${buttonInput.value} {\n\t/* この中で「${buttonInput.value}」の見た目を調整 */\n}\n`
+      );
+      insertInJsAtTop(
+        `const ${buttonInput.value} = document.getElementById("${buttonInput.value}"); // 「${buttonInput.value}」の動きを操作するための準備\n`
+      );
+    } else {
+      alert("名前を入力してください！");
+    }
   };
 
   inputButton.onclick = () => {
-    insertInHtmlAtBodyBottom(
-      `\t\t<input id="${inputInput.value}" type="text"/>\n`
-    );
-    insertInCssAtBottom(
-      `#${inputInput.value} {\n\t/* この中で「${inputInput.value}」の見た目を調整 */\n}\n`
-    );
-    insertInJsAtTop(
-      `const ${inputInput.value} = document.getElementById("${inputInput.value}"); // 「${inputInput.value}」の動きを操作するための準備\n`
-    );
+    if (inputInput.value != "") {
+      insertInHtmlAtBodyBottom(
+        `\t\t<input id="${inputInput.value}" type="text"/>\n`
+      );
+      insertInCssAtBottom(
+        `#${inputInput.value} {\n\t/* この中で「${inputInput.value}」の見た目を調整 */\n}\n`
+      );
+      insertInJsAtTop(
+        `const ${inputInput.value} = document.getElementById("${inputInput.value}"); // 「${inputInput.value}」の動きを操作するための準備\n`
+      );
+    } else {
+      alert("名前を入力してください！");
+    }
   };
 
   // 「見た目」（主にCSS）
   // CSSエディタでのプロパティの操作。カーソル位置に挿入。
   whButton.onclick = () => {
-    insertInCssAtCursor(
-      `width: ${widthInput.value}px; /* 横の長さ */\n\theight: ${heightInput.value}px; /* 縦の長さ */\n\t`
-    );
+    if (widthInput.value != "" && heightInput.value != "") {
+      insertInCssAtCursor(
+        `width: ${widthInput.value}px; /* 横の長さ */\n\theight: ${heightInput.value}px; /* 縦の長さ */\n\t`
+      );
+    } else {
+      alert("縦と横の長さを入力してください！");
+    }
   };
 
   colorButton.onclick = () => {
@@ -374,48 +402,76 @@ require(["vs/editor/editor.main"], () => {
   };
 
   onclickButton.onclick = () => {
-    insertInJsAtCursor(
-      `${onclickInput.value}.onclick = () => {\n\t// 「${onclickInput.value}」がクリックされたときの動作\n\t\n}\n`
-    );
+    if (onclickInput.value != "") {
+      insertInJsAtCursor(
+        `${onclickInput.value}.onclick = () => {\n\t// 「${onclickInput.value}」がクリックされたときの動作\n\t\n}\n`
+      );
+    } else {
+      alert("名前を入力してください！");
+    }
   };
 
-  rightClickButton.onclick = () => {
-    insertInJsAtCursor(
-      `${rightClickInput.value}.addEventListener("contextmenu", (e) => {\n\te.preventDefault(); // 右クリックすると通常出るメニューを表示しない\n\t// 「」が右クリックされたときの動作\n\t\n});\n`
-      // `${rightClickInput.value}.addEventListener(\"contextmenu\", (e) => {\r\n    \/\/ \u53f3\u30af\u30ea\u30c3\u30af\u3055\u308c\u305f\u3068\u304d\r\n    \/\/ \u53f3\u30af\u30ea\u30c3\u30af\u306e\u30e1\u30cb\u30e5\u30fc\u3092\u8868\u793a\u3057\u306a\u3044\r\n    e.preventDefault();\r\n    \/\/ \u884c\u3046\u51e6\u7406\r\n    \r\n  });\n`
-    );
-  };
+  // rightClickButton.onclick = () => {
+  //   if (rightClickInput.value != "") {
+  //   insertInJsAtCursor(
+  //     `${rightClickInput.value}.addEventListener("contextmenu", (e) => {\n\te.preventDefault(); // 右クリックすると通常出るメニューを表示しない\n\t// 「」が右クリックされたときの動作\n\t\n});\n`
+  //     // `${rightClickInput.value}.addEventListener(\"contextmenu\", (e) => {\r\n    \/\/ \u53f3\u30af\u30ea\u30c3\u30af\u3055\u308c\u305f\u3068\u304d\r\n    \/\/ \u53f3\u30af\u30ea\u30c3\u30af\u306e\u30e1\u30cb\u30e5\u30fc\u3092\u8868\u793a\u3057\u306a\u3044\r\n    e.preventDefault();\r\n    \/\/ \u884c\u3046\u51e6\u7406\r\n    \r\n  });\n`
+  //   );
+  // } else {
+  //   alert("名前を入力してください！");
+  // }
+  // };
 
   setTimeOutButton.onclick = () => {
-    insertInJsAtCursor(
-      `setTimeout(() => {\r\n\t\t\t\/\/ (\u4e0b\u306e\u6570\u5b57\u00f71000)\u79d2\u5f85\u3063\u3066\u304b\u3089\u4ee5\u4e0b\u306b\u66f8\u3044\u305f\u64cd\u4f5c\u3092\u5b9f\u884c\u3059\u308b\r\n\t    }, ${
-        setTimeOutInput.value * 1000
-      });\r\n\t\t`
-    );
+    if (setTimeOutInput.value != "") {
+      insertInJsAtCursor(
+        `setTimeout(() => {\r\n\t\t\t\/\/ (\u4e0b\u306e\u6570\u5b57\u00f71000)\u79d2\u5f85\u3063\u3066\u304b\u3089\u4ee5\u4e0b\u306b\u66f8\u3044\u305f\u64cd\u4f5c\u3092\u5b9f\u884c\u3059\u308b\r\n\t    }, ${
+          setTimeOutInput.value * 1000
+        });\r\n\t\t`
+      );
+    } else {
+      alert("時間を入力してください！");
+    }
   };
 
   colorChangeButton.onclick = () => {
-    insertInJsAtCursor(
-      `${colorChangeInput.value}.style.backgroundColor = "${colorChangeSelect.value}"; // 「${colorChangeInput.value}」の背景色を変更する\r\n\t`
-    );
+    if (colorChangeInput.value != "") {
+      insertInJsAtCursor(
+        `${colorChangeInput.value}.style.backgroundColor = "${colorChangeSelect.value}"; // 「${colorChangeInput.value}」の背景色を変更する\r\n\t`
+      );
+    } else {
+      alert("名前を入力してください！");
+    }
   };
 
   textContentButton.onclick = () => {
-    insertInJsAtCursor(
-      `${textContentInput.value}.textContent = "この文字に変わります"; // 「${textContentInput.value}」の文字を変更する\r\n\t`
-    );
+    if (textContentInput.value != "") {
+      insertInJsAtCursor(
+        `${textContentInput.value}.textContent = "この文字に変わります"; // 「${textContentInput.value}」の文字を変更する\r\n\t`
+      );
+    } else {
+      alert("名前を入力してください！");
+    }
   };
 
   hideButton.onclick = () => {
-    insertInJsAtCursor(
-      `${hideInput.value}.style.display = "none"; // 「${hideInput.value}」を隠す\r\n\t`
-    );
+    if (hideInput.value != "") {
+      insertInJsAtCursor(
+        `${hideInput.value}.style.display = "none"; // 「${hideInput.value}」を隠す\r\n\t`
+      );
+    } else {
+      alert("名前を入力してください！");
+    }
   };
 
   showButton.onclick = () => {
-    insertInJsAtCursor(
-      `${showInput.value}.style.display = "block"; // 「${showInput.value}」を表示する\r\n\t`
-    );
+    if (showInput.value != "") {
+      insertInJsAtCursor(
+        `${showInput.value}.style.display = "block"; // 「${showInput.value}」を表示する\r\n\t`
+      );
+    } else {
+      alert("名前を入力してください！");
+    }
   };
 
   // テンプレート
