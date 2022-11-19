@@ -16,23 +16,11 @@ register.addEventListener("click", () => {
     // リストに項目を追加
     const li = document.createElement("li");
     li.innerText = input.value;
-
-    li.addEventListener("contextmenu", (e) => {
-      // 右クリックされたとき
-      // 右クリックのメニューを表示しない
-      e.preventDefault();
-      if (confirm("このタスクを削除します")) {
-        li.remove();
-      }
-      // データを保存
-      const todos = ul.innerHTML;
-      localStorage.setItem("todos", todos);
-    });
-
     li.addEventListener("click", () => {
       // 左クリックされたとき
-      li.classList.toggle("line");
-
+      if (confirm(`タスク「${li.textContent}」を削除します`)) {
+        li.remove();
+      }
       // データを保存
       const todos = ul.innerHTML;
       localStorage.setItem("todos", todos);
