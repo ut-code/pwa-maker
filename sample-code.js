@@ -18,7 +18,7 @@ export default {
   bmiJs:
     'const answer = document.getElementById("answer");\r\nconst height = document.getElementById("height");\r\nconst weight = document.getElementById("weight");\r\n\r\nconst bmibutton = document.getElementById("bmibutton");\r\n\r\nbmibutton.onclick = () => {\r\n  // \u300cbutton\u300d\u304c\u30af\u30ea\u30c3\u30af\u3055\u308c\u305f\u3068\u304d\u306e\u52d5\u4f5c\r\n  answer.textContent = weight.value / (height.value / 100) ** 2;\r\n};\r\n',
   todoDiv:
-    '\t<div id="wrapper">\n\t\t<h1>TODO</h1>\n\t\t<p>\n\t\t\tタスクを入力して「登録」で登録できます。タスクをクリックで達成済、右クリック（スマホなら長押し）で削除になります。「リセット」ですべて削除します。\n\t\t</p>\n\t\t<div>\n\t\t\t<input type="text" id="input" placeholder="タスクを入力" />\n\t\t\t<button id="register">登録</button>\n\t\t\t<button id="reset">リセット</button>\n\t\t</div>\n\t\t<ul id="ul"></ul>\n\t</div>\n',
+    '\t<div id="wrapper">\n\t\t<h1>TODO</h1>\n\t\t<p>\n\t\t\tタスクを入力して「登録」で登録できます。タスクをクリックで削除になります。「リセット」ですべて削除します。\n\t\t</p>\n\t\t<div>\n\t\t\t<input type="text" id="input" placeholder="タスクを入力" />\n\t\t\t<button id="register">登録</button>\n\t\t\t<button id="reset">リセット</button>\n\t\t</div>\n\t\t<ul id="ul"></ul>\n\t</div>\n',
   todoCss:
     "ul {\r\n  margin: auto;\r\n  width: 150px;\r\n}\r\n#wrapper {\r\n  text-align: center;\r\n}\r\n.line {\r\n  text-decoration: line-through;\r\n}\r\n",
   todoJs:
